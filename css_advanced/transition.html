@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      border-style: solid;
+      border-width: 1px;
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-color: rgba(183, 0, 255, 0.3);
+      /* transition: width 2s, height 2s, background-color 2s; */
+       transition-property: width, height, background-color;
+       transition-duration: 3s, 1s, 5s;
+    }
+
+    .box:hover {
+      background-color: rgba(11, 81, 212, 0.3);
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>The box below combines transitions for: width, height, background-color, transform. Hover over the box to see these properties animated.</p>
+
+  <div class="box">Sample</div>
+</body>
+
+</html>
