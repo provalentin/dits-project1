@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            display:flex;
+            justify-content: start;
+            align-items: center;
+            width: 500px;
+        }
+        .two {
+            order: 1;
+        }
+        .box>div{
+            flex-basis: 200px;
+            background-color: lightgrey;
+            border: blue;
+            border-radius: 5px;
+            /*flex-grow: 1;*/
+            /*flex-shrink: 0;*/
+            flex: 1 1 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>One</div>
+        <div class="two">Two</div>
+        <div>Three
+            <br>has
+            <br>extra
+            <br>text
+        </div>
+        <div>Four</div>
+        <div>One</div>
+        <div>One</div>
+        <div>One</div>
+    </div>
+</body>
+</html>
