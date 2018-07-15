@@ -8,7 +8,7 @@ body {
     align-items: center;
     width: 1062px;
     margin: 0 auto;
-    padding: 68px 0 71px;
+    padding: 63px 0 61px;
 }
 
 .title {
@@ -50,7 +50,7 @@ body {
 }
 
 .content {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
 }
 
 .content-wrapper {
@@ -62,9 +62,15 @@ body {
     display: block;
     margin-bottom: 94px;
 }
-
+.comment-tag{
+    color: rgb(180, 173, 158);
+    font-family: Ubuntu;
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
 .tag {
-    margin: 0 0 22px;
+    margin: 26px 0 18px;
     color: rgb(180, 173, 158);
     font-family: Ubuntu;
     font-size: 14px;
@@ -84,6 +90,15 @@ body {
     padding: 0 80px;
 }
 
+.main-descr {
+    margin: 0;
+    color: rgb(98, 98, 98);
+    font-family: "Playfair Display";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
 .descr {
     margin: 0;
     color: rgb(98, 98, 98);
@@ -91,6 +106,18 @@ body {
     font-size: 14px;
     font-weight: 400;
     line-height: 24px;
+    max-height: 72px;
+    overflow: hidden;
+}
+
+.sign-up {
+    /* Style for "background" */
+    width: 1200px;
+    height: 287px;
+    background-color: rgb(240, 240, 240);
+    text-align: center;
+    margin-top: 133px;
+    margin-bottom: -10px;
 }
 
 .posts-container {
@@ -101,4 +128,6 @@ body {
 
 .post-item {
     width: 423px;
+    height: 480px;
+    padding-top: 122px;
 }
