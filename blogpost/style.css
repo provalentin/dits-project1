@@ -1,43 +1,45 @@
 body {
     margin: 0;
+    /*background-image: url("img/minimo.psd.png");*/
 }
+
 .header-wrapper {
     display: flex;
     align-items: center;
     width: 1062px;
     margin: 0 auto;
-    padding-top: 69px;
-    padding-bottom: 71px;
+    padding: 68px 0 71px;
 }
 
-.menu-nav {
+.title {
+    margin: 0;
+    margin-right: 371px;
+}
+
+.menu-navigation {
     flex-grow: 1;
 }
 
 .menu-list {
     display: flex;
-    list-style: none;
-    align-items: flex-end;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
-.menu-item:nth-child(1) {
+.menu-item:nth-of-type(1) {
     margin-right: 121px;
 }
 
-.menu-item:nth-child(2) {
+.menu-item:nth-of-type(2) {
     margin-right: 103px;
 }
 
-.menu-item:nth-child(3) {
+.menu-item:nth-of-type(3) {
     margin-right: 95px;
 }
 
 .menu-link {
-    /* Style for "lifestyle" */
-    width: 71px;
-    height: 11px;
     color: rgb(98, 98, 98);
     font-family: "Playfair Display", serif;
     font-size: 14px;
@@ -47,43 +49,22 @@ body {
     text-decoration: none;
 }
 
-.title {
-    /* Style for "minimø" */
-    width: 119px;
-    height: 23px;
-    color: rgb(0, 0, 0);
-    font-family: Inconsolata;
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 24px;
-    text-transform: uppercase;
-    /* Text style for "minim, ø" */
-    letter-spacing: 6px;
-    margin-right: 371px;
-}
-
 .content {
     margin-bottom: 48px;
 }
 
 .content-wrapper {
-    display: flex;
-    align-items: center;
     width: 1062px;
     margin: 0 auto;
-    padding-top: 69px;
-    padding-bottom: 71px;
 }
 
-.main-image {
+.main-img {
     display: block;
     margin-bottom: 94px;
 }
 
 .tag {
-    /* Style for "photodiary" */
-    width: 85px;
-    height: 11px;
+    margin: 0 0 22px;
     color: rgb(180, 173, 158);
     font-family: Ubuntu;
     font-size: 14px;
@@ -99,6 +80,10 @@ body {
     font-weight: 400;
 }
 
+.inner-content {
+    padding: 0 80px;
+}
+
 .descr {
     margin: 0;
     color: rgb(98, 98, 98);
@@ -111,6 +96,7 @@ body {
 .posts-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .post-item {
