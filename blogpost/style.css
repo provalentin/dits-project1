@@ -131,3 +131,52 @@ body {
     height: 480px;
     padding-top: 122px;
 }
+.load-more-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 165px;
+    margin-bottom: 150px;
+}
+.box {
+    /* Style for "load more box" */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 166px;
+    height: 62px;
+    border: 1px solid #626262;
+}
+.load-more-btn {
+    /* Style for "Load more" */
+    align-items: center;
+    justify-content: center;
+    color: #626262;
+    font-family: "Playfair Display";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.footer-wrapper {
+    /* Style for "background" */
+    width: 1200px;
+    height: 100px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer {
+
+}
+.footer-text {
+    /* Style for "Terms and" */
+    height: 12px;
+    margin-left: 50px;
+    margin-right: 50px;
+    color: #000000;
+    font-family: "Playfair Display";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
