@@ -1,0 +1,29 @@
+@import "util/variables";
+@import "util/extend";
+
+.btn-primary {
+  @extend .btn;
+  // background-color: $blue;
+}
+ 
+.btn-secondary {
+  @extend .btn;
+  // background-color: $red;
+  width: (200px / 2);
+  width: percentage(5/2);
+  color: rgba(black, 0.7);
+}
+
+h1 {
+  background-color: $main-color;
+  color: blue;
+  font-family: $main-font;
+}
+
+h2 {
+  background-color: #green;
+}
+
+h3 {
+  background-color: #blue;
+}

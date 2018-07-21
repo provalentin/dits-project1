@@ -1,0 +1,22 @@
+.btn, .btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px; }
+
+.btn-secondary {
+  width: 100px;
+  width: 250%;
+  color: rgba(0, 0, 0, 0.7); }
+
+h1 {
+  background-color: red;
+  color: blue;
+  font-family: "Roboto", "Arial", sans-serif; }
+
+h2 {
+  background-color: #green; }
+
+h3 {
+  background-color: #blue; }
