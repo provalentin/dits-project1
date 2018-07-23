@@ -1,0 +1,98 @@
+.header {
+
+}
+.header-bg{
+    /* Style for "picture" */
+    width: 1920px;
+    height: 1001px;
+    margin-left: 0px;
+    margin-right: 0px;
+    /*background: linear-gradient(to top, rgba(252, 227, 138, 0.9) 0%, rgba(243, 129, 129, 0.9) 100%), url("../img/eagle.jpg");*/
+    background: linear-gradient(to top, rgba(252, 227, 138, 0.9) 0%, rgba(243, 129, 129, 0.9) 100%), url("../img/eagle.jpg") no-repeat center;
+}
+.header-content {
+    margint-left: 0px;
+    margin-right: 250px;
+}
+.logo {
+    /* Style for "MoGo" */
+    width: 86px;
+    height: 23px;
+    margin-top: 30px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    /* Text style for "M, G" */
+    /*text-transform: uppercase;*/
+}
+.menu-button {
+    /* Style for "service" */
+    width: 60px;
+    height: 10px;
+    margin-top: 40px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.menu-button-image {
+    /* Style for "SHOPPING C" */
+    width: 20px;
+    height: 20px;
+    margin-top: 36px;
+    background-color: #ffffff00;
+}
+.menu-button-active {
+    /* Style for "About" */
+    width: 51px;
+    height: 10px;
+    color: #fce38a;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.title-small {
+    /* Style for "Creative T" */
+    width: 608px;
+    height: 87px;
+    margin-top: 229px;
+    color: #ffffff;
+    font-family: "Kaushan Script";
+    font-size: 72px;
+    font-weight: 400;
+    text-align: center;
+}
+.title-large {
+    /* Style for "Welcome to" */
+    width: 802px;
+    height: 248px;
+    margin-top: 42px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 150px;
+    font-weight: 700;
+    line-height: 140px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.learn-more{
+    /* Style for "Learn more" */
+    width: 95px;
+    height: 11px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.line-divider {
+    /* Style for "Rectangle" */
+    width: 62px;
+    height: 5px;
+    background-color: #ffffff;
+}
