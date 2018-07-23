@@ -15,8 +15,28 @@ img {
     position: absolute;
     width: 960px;
     height: 5000px;
+    z-index: -1;
 }
 
+.header-text-small {
+    /* Style for "Creative T" */
+    height: 87px;
+    padding-top: 60px;
+    color: #ffffff;
+    font-family: "Kaushan Script";
+    font-size: 32px;
+    font-weight: 400;
+}
+.header-text-large {
+    /* Style for "Welcome to" */
+    height: 248px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 140px;
+    text-transform: uppercase;
+}
 .main-image-bg {
     position: absolute;
     width: 800px;
