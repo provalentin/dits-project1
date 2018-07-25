@@ -155,7 +155,7 @@
 }
 .section-header-normal{
     /* Style for "Story abou" */
-    width: 270px;
+    width: 310px;
     height: 23px;
     margin-top: 23px;
     color: #333333;
@@ -163,16 +163,18 @@
     font-size: 30px;
     font-weight: 700;
     text-transform: uppercase;
+    text-align: center;
 }
 .section-header-small{
     /* Style for "What we do" */
-    width: 108px;
+    width: 140px;
     height: 23px;
     margin-top: 90px;
     color: #333333;
     font-family: "Kaushan Script";
     font-size: 24px;
     font-weight: 400;
+    text-align: center;
 }
 .section-line-divider{
     /* Style for "Rectangle" */
@@ -225,4 +227,85 @@
     height: 272px;
     margin-top: 108px;
     background-color: #95e1d3;
+    border: 2px solid #ffffff
+}
+.big-digit-holder {
+    width: 85px;
+    height: 51px;
+    border: 2px solid #ffffff
+}
+.big-digit{
+    /* Style for "42" */
+    width: 85px;
+    height: 51px;
+    margin-top: 90px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 72px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+.big-digit-text{
+    /* Style for "Web Design" */
+    width: 169px;
+    height: 10px;
+    margin-top: 60px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+}
+.digit-border {
+    /* Style for "Shape 2 co" */
+    width: 4px;
+    height: 273px;
+    background-color: #ffffff;
+    opacity: 0.3;
+}
+.card-text-header{
+    /* Style for "Photograph" */
+    width: 110px;
+    height: 10px;
+    margin-left: 30px;
+    color: #333333;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.card-text-content{
+    /* Style for "Lorem ipsu" */
+    width: 273px;
+    height: 39px;
+    margin-top: 20px;
+    margin-left: 70px;
+    color: #999999;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.big-divider-horizontal{
+    /* Style for "Shape 4 co" */
+    width: 1202px;
+    height: 4px;
+    margin-top: 100px;
+    background-color: #e5e5e5;
+}
+.section-unique-design{
+    /* Style for "Layer 45" */
+    width: 1920px;
+    height: 852px;
+    margin-top: 120px;
+    /*background-image: url("../img/Layer_45.png");*/
+    /*background-color: rgba(255, 255, 255, 0.85);*/
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url("../img/Layer_45.png") no-repeat center;
+}
+.section-service{
+    width: 1920px;
+    height: 852px;
+    margin-top: 120px;
 }
