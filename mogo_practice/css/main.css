@@ -147,3 +147,55 @@
     height: 42px;
     border: 3px solid rgb(255, 255, 255);
 }
+.main {
+    width: 1200px;
+}
+.section-header-normal{
+    /* Style for "Story abou" */
+    width: 270px;
+    height: 23px;
+    margin-top: 23px;
+    color: #333333;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.section-header-small{
+    /* Style for "What we do" */
+    width: 108px;
+    height: 23px;
+    margin-top: 90px;
+    color: #333333;
+    font-family: "Kaushan Script";
+    font-size: 24px;
+    font-weight: 400;
+}
+.section-line-divider{
+    /* Style for "Rectangle" */
+    width: 62px;
+    height: 5px;
+    margin-top: 39px;
+    background-color: #f38181;
+}
+.section-content-text{
+    /* Style for "Lorem ipsu" */
+    width: 954px;
+    height: 39px;
+    margin-top: 46px;
+    color: #999999;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+}
+.section-photo{
+    /* Style for "Layer 39" */
+    width: 382px;
+    height: 252px;
+    margin-top: 100px;
+}
+.section-photo-margin{
+    margin-top: 100px;
+}
