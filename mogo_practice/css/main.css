@@ -14,6 +14,47 @@
     margint-left: 0px;
     margin-right: 250px;
 }
+.content-margin {
+    margin-left: 350px;
+    margin-right: 350px;
+    /*border: 1px solid blue;*/
+}
+.progress-divider {
+    /* Style for "Rectangle" */
+    width: 90%;
+    height: 5px;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.5;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 120px;
+}
+.progress-label {
+    /* Style for "02 Work" */
+    width: 150px;
+    height: 17px;
+    opacity: 0.7;
+    color: rgb(255, 255, 255);
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    /* Text style for "Work" */
+    font-family: "Montserrat - Regular";
+    font-weight: 400;
+}
+.progress-digit {
+    opacity: 0.7;
+    color: rgb(255, 255, 255);
+    /* Text style for "02" */
+    font-family: "Montserrat - Bold";
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
 .logo {
     /* Style for "MoGo" */
     width: 86px;
@@ -72,6 +113,7 @@
     width: 802px;
     height: 248px;
     margin-top: 42px;
+    margin-bottom: 75px;
     color: #ffffff;
     font-family: Montserrat;
     font-size: 150px;
@@ -84,6 +126,7 @@
     /* Style for "Learn more" */
     width: 95px;
     height: 11px;
+    margin-top: 50px;
     color: #ffffff;
     font-family: Montserrat;
     font-size: 14px;
@@ -92,7 +135,15 @@
 }
 .line-divider {
     /* Style for "Rectangle" */
-    width: 62px;
+    width: 162px;
     height: 5px;
+    margint-top: 70px;
     background-color: #ffffff;
+    text-align: center;
+}
+.learn-more-border {
+    /* Style for "Rectangle" */
+    width: 162px;
+    height: 42px;
+    border: 3px solid rgb(255, 255, 255);
 }
