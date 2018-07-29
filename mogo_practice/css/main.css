@@ -127,18 +127,22 @@
 }
 .learn-more{
     /* Style for "Learn more" */
-    width: 95px;
-    height: 11px;
     margin-top: 50px;
+    padding-top:10px;
     color: #ffffff;
     font-family: Montserrat;
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
 }
+.learn-more-button{
+    color: #ffffff;
+    margin-left: 30px;
+    text-decoration: none;
+}
 .line-divider {
     /* Style for "Rectangle" */
-    width: 162px;
+    width: 62px;
     height: 5px;
     margint-top: 70px;
     background-color: #ffffff;
