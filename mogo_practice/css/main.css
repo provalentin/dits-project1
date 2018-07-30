@@ -19,6 +19,10 @@
     margin-right: 350px;
     /*border: 1px solid blue;*/
 }
+.content-padding {
+    padding-left: 350px;
+    padding-right: 350px;
+}
 .border-grey{
     border: 1px solid grey;
 }
@@ -320,3 +324,39 @@
     height: 852px;
     margin-top: 120px;
 }
+.quoted-text{
+    /* Style for "“Lorem ips" */
+    width: 767px;
+    height: 96px;
+    margin-top: 80px;
+    color: #999999;
+    font-family: "Roboto - Light Italic";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+}
+.quoted-footer{
+    /* Style for "Jon Doe" */
+    width: 120px;
+    height: 22px;
+    margin-top: 23px;
+    color: #333333;
+    font-family: "Kaushan Script";
+    font-size: 24px;
+    font-weight: 400;
+}
+.quoted-bg{
+    /* Style for "Rectangle" */
+    width: 1920px;
+    height: 292px;
+    background-color: #f8f8f8;
+}
+.quoted-rectangle{
+    /* Style for "Rectangle" */
+    width: 152px;
+    height: 152px;
+    padding: 44px;
+    margin: 70px;
+    border: 3px solid #95e1d3;
+}
+
