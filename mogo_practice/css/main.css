@@ -2,11 +2,11 @@
 
 }
 .main-width{
-    width: 1920px;
+    width: 100%;
 }
 .header-bg{
     /* Style for "picture" */
-    width: 1920px;
+    width: 100%;
     height: 1001px;
     margin-left: 0px;
     margin-right: 0px;
@@ -18,13 +18,13 @@
     margin-right: 250px;
 }
 .content-margin {
-    margin-left: 350px;
-    margin-right: 350px;
+    margin-left: 0px;
+    margin-right: 0px;
     /*border: 1px solid blue;*/
 }
 .content-padding {
-    padding-left: 350px;
-    padding-right: 350px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 .border-grey{
     border: 1px solid grey;
@@ -162,7 +162,7 @@
     border: 3px solid rgb(255, 255, 255);
 }
 .main {
-    width: 1200px;
+    width: 100%;
 }
 .section-header-normal{
     /* Style for "Story abou" */
@@ -234,7 +234,7 @@
 }
 .section-full-width{
     /* Style for "Rectangle" */
-    width: 1920px;
+    width: 100%;
     height: 272px;
     margin-top: 108px;
     background-color: #95e1d3;
@@ -308,7 +308,7 @@
 }
 .section-unique-design{
     /* Style for "Layer 45" */
-    width: 1920px;
+    width: 100%;
     height: 852px;
     margin-top: 120px;
     /*background-image: url("../img/Layer_45.png");*/
@@ -323,7 +323,7 @@
     margin-left: 520px;
 }
 .section-service{
-    width: 1200px;
+    width: 100%;
     height: 852px;
     margin-top: 120px;
 }
@@ -340,7 +340,7 @@
 }
 .quoted-footer{
     /* Style for "Jon Doe" */
-    width: 120px;
+    width: 150px;
     height: 22px;
     margin-top: 23px;
     color: #333333;
@@ -350,14 +350,14 @@
 }
 .logo-sample{
     /* Style for "Rectangle" */
-    width: 1920px;
+    width: 100%;
     height: 252px;
     padding-top:50px;
     background-color: #f8f8f8;
 }
 .quoted-bg{
     /* Style for "Rectangle" */
-    width: 1920px;
+    width: 100%;
     height: 292px;
     background-color: #f8f8f8;
 }
@@ -377,14 +377,14 @@
 }
 .section-happy-clients{
     /* Style for "Layer 45" */
-    width: 1920px;
+    width: 100%;
     height: 852px;
     margin-top: 120px;
     background: linear-gradient(to top, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url("../img/Layer_53.png") no-repeat center;
 }
 .section-map{
     /* Style for "Rectangle" */
-    width: 1920px;
+    width: 100%;
     height: 202px;
     margin-top: 120px;
     padding-top:57px;
