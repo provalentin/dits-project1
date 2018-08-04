@@ -1,6 +1,9 @@
 .header {
 
 }
+.main-width{
+    width: 1920px;
+}
 .header-bg{
     /* Style for "picture" */
     width: 1920px;
@@ -163,7 +166,7 @@
 }
 .section-header-normal{
     /* Style for "Story abou" */
-    width: 310px;
+    width: 410px;
     height: 23px;
     margin-top: 23px;
     color: #333333;
@@ -345,6 +348,13 @@
     font-size: 24px;
     font-weight: 400;
 }
+.logo-sample{
+    /* Style for "Rectangle" */
+    width: 1920px;
+    height: 252px;
+    padding-top:50px;
+    background-color: #f8f8f8;
+}
 .quoted-bg{
     /* Style for "Rectangle" */
     width: 1920px;
@@ -358,5 +368,38 @@
     padding: 44px;
     margin: 70px;
     border: 3px solid #95e1d3;
+}
+.quoted-image{
+    /* Style for "Rectangle" */
+    width: 212px;
+    height: 212px;
+    margin: 70px;
+}
+.section-happy-clients{
+    /* Style for "Layer 45" */
+    width: 1920px;
+    height: 852px;
+    margin-top: 120px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url("../img/Layer_53.png") no-repeat center;
+}
+.section-map{
+    /* Style for "Rectangle" */
+    width: 1920px;
+    height: 202px;
+    margin-top: 120px;
+    padding-top:57px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url("../img/Layer_59.png") no-repeat center;
+}
+.map-text{
+    /* Style for "Open map" */
+    width: 142px;
+    height: 18px;
+    margin-top:18px;
+    color: #f38181;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
 }
 
