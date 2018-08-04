@@ -163,6 +163,8 @@
 }
 .main {
     width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 .section-header-normal{
     /* Style for "Story abou" */
@@ -430,4 +432,7 @@
     height: 3px;
     margin-top: 19px;
     background-color: #e5e5e5;
+}
+.image-max-width{
+    max-width:100%;
 }
