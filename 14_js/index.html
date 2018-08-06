@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var a = Array(5).fill(4);
+        console.log(a.toString());
+        function loop() {
+            var str = "";
+            var i = 0;
+            while (i<=5) {
+                str = str + i;
+                i++;
+            }
+            console.log(str);
+        }
+        loop()
+
+        let me = function() {
+            //alert("hello anon function");
+        }
+        console.log(me());
+        function sayHi(my="123") {
+            console.log("1:" + my);
+            var my = "hello";
+            console.log("2: " + my);
+        }
+        var my = "111";
+        sayHi(my);
+        console.log("3:" + my);
+        console.log(sayHi());
+
+        function concatenator(a, separator=" ", b) {
+            if(b) {
+                return a + separator + b;
+            } else {
+                return a + " " + b;
+            }
+        }
+        console.log("concat result: " + concatenator(a="i", b = "am"));
+        function factorial(a) {
+            if(a === 1) {
+                return 1
+            } else {
+                return a * factorial(a-1);
+            }
+        }
+        console.log(factorial(170));
+        function power(a, pow) {
+            console.log("pow: " + a + " : " + pow);
+            //console.log("power-1" + (pow-1))
+            if(pow === 1) {
+                return a;
+            } else {
+                return a * power(a, pow - 1);
+            }
+        }
+        console.log("power: " + power(2, 3));
+        var a = ["1a", "2b", "3c"];
+        console.log(a.toString());
+        for(i=0;i<a.length;i++){
+            console.log(a[i]);
+        }
+        a.forEach(function(item) { console.log("blablabla " + item)})
+    </script>
+</head>
+<body>
+
+</body>
+</html>
