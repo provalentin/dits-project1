@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var obj = new Object();
+        obj.numericField = 1;
+        obj.stringField = "abc";
+        console.log("obj: " + obj);
+        var obj2 = {
+            numF: 2,
+            strF: "cba",
+            boolF: true,
+            toString: function() {
+                return "{ numF : " + this.numF
+                    + ", strF: " + this.strF
+                    + ", boolF: " + this.boolF + " }";
+            },
+            copy: function(){
+                return Object.assign({}, this);
+            }
+        }
+        console.log("obj2: " + obj2.toString());
+        var obj3 = obj2.copy();
+        console.log("obj3: " + obj3.toString());
+        //f*cking prototype
+        Function.prototype.bind = function(context) {
+            var fn = this;
+            return function() {
+                return fn.apply(context.arguments);
+            };
+        };
+        var HelloPage = {
+            name: "John",
+            init: function() {
+                //alert("Hello" + this.name);
+            }
+        }
+        window.onload = HelloPage.init;
+        window.onload = setTimeout(HelloPage.init.bind(HelloPage),4000);
+
+        const startTime = new Date().getSeconds();
+        console.log("start time: " + startTime);
+
+        //var interval = setInterval(myTime(), 10000);
+        function myTime() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+            var s = d.getSeconds();
+            console.log(t);
+
+            document.getElementById("timer").innerHTML = "<span style='color:#" + (s+40)+ (s+40) + (s+40) + "'> " + t + " </span>";
+            setTimeout(myTime, 1000);
+        }
+        //myTime();
+
+        //objects and properties
+        var o = {};
+        Object.defineProperty(o, 'a', {
+            value: 42,
+            writable: true
+        });
+        var z = 100;
+        Object.defineProperty(o, 'b', {
+            get() {return z;}
+
+        })
+
+        //new object with blueprints
+        var obj1 = new Object("Alex", 34, "male");
+        var obj2 = new Object("John", 22, "male");
+        console.log("A: " + obj1);
+
+        //constructor
+
+        var person = new Person("John", 76, "male");
+        function Person(firstname, age, sex) {
+            this.firstName = firstname;
+            this.age = age;
+            this.sex = sex;
+            this.user = function(newname) {
+                this.firstName = newname;
+            }
+        }
+
+        console.log(person);
+        person.user("PapaJohn");
+        console.log(person);
+    </script>
+
+</head>
+<body onload="myTime()">
+<p id="timer">
+    <span style='color:#FF0000'> ---- </span>;
+</p>
+</body>
+</html>
