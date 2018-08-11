@@ -47,10 +47,15 @@
         console.log(getField(test5, "firstName"));
 
         //counter
-        var createCounter = function(startValue, step) {
-            var value = startValue-step;
+        var createCounter = function(startValue=0, step=1) {
+            var value = startValue;
+            var isFirstCall = false;
             var f = function() {
-                value += step;
+                if(isFirstCall) {
+                    value += step;
+                }else{
+                    isFirstCall = true;
+                }
                 return value;
             }
             return f;
