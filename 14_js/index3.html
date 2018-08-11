@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
+
+        //get count
         var getCount = function(obj) {
+            //easy solution:
             //return Object.keys(obj).length;
             var counter = 0;
             for (var attr in obj) {
@@ -70,6 +73,7 @@
         console.log("c2: " + counter2());
         console.log("c2: " + counter2());
 
+        //pick function
         var pick = function(cntr, n) {
             var result = [];
             for(var i=0;i<n;i++){
@@ -81,7 +85,7 @@
         console.log(pick(counter3,5));
         
         function square(x) {return x*x};
-
+        //map function
         function map(fn, array) {
             var result = [];
             for(var i=0;i<array.length;i++){
@@ -98,6 +102,7 @@
         console.log("map result: " + betterMap(square,[1,2,3,4]));
         console.log("empty map result: " + map(square, []));
 
+        //filter function
         var input = [1,2,3,4,5,6];
         function isOdd(x) {return x % 2 == 1}
         function filter(fn, array) {
