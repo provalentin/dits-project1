@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var getCount = function(obj) {
+            //return Object.keys(obj).length;
+            var counter = 0;
+            for (var attr in obj) {
+                console.log("attr: " + attr);
+                counter++;
+            }
+            return counter;
+        }
+        var test1 = {a : 1, b: 2, c: 3};
+        console.log("test1: " + getCount(test1));
+        var test2 = function() {};
+        console.log("test2: " + getCount(test2));
+        var test3 = [1,2,3,4];
+        console.log("test3: " + getCount(test3));
+        var test4 = [];
+        test4[100] = 1;
+        console.log("test4: " + getCount(test4));
+
+        //getField
+
+        var getField = function(ar, pattern) {
+
+            var result = [];
+            for(var i = 0;i<ar.length;i++) {
+                var obj = ar[i];
+                for (var attr in obj) {
+                    if (attr === pattern) {
+                        console.log("attr: " + obj[attr]);
+                        result.push(obj[attr]);
+                    }
+                }
+            }
+            return result;
+        }
+
+        var test5 = [
+            {"firstName": "test1", "secondName": "test3"},
+            {"firstName": "test2", "secondName": "test4"}
+            ];
+        console.log(getField(test5, "firstName"));
+
+        //counter
+        var createCounter = function(startValue, step) {
+            var value = startValue-step;
+            var f = function() {
+                value += step;
+                return value;
+            }
+            return f;
+        }
+        var counter1 = createCounter(10, 3);
+        var counter2 = createCounter(7, 1);
+
+        console.log("c1: " + counter1());
+        console.log("c1: " + counter1());
+        console.log("c1: " + counter1());
+
+        console.log("c2: " + counter2());
+        console.log("c2: " + counter2());
+
+        var pick = function(cntr, n) {
+            var result = [];
+            for(var i=0;i<n;i++){
+                result.push(cntr());
+            }
+            return result;
+        }
+        var counter3 = createCounter(0,2);
+        console.log(pick(counter3,5));
+        
+        function square(x) {return x*x};
+
+        function map(fn, array) {
+            var result = [];
+            for(var i=0;i<array.length;i++){
+                result.push(fn(array[i]));
+            }
+            return result;
+        }
+
+        function betterMap(fn, array) {
+            return array.map(fn);
+        }
+
+        console.log("map result: " + map(square,[1,2,3,4]));
+        console.log("map result: " + betterMap(square,[1,2,3,4]));
+        console.log("empty map result: " + map(square, []));
+
+        var input = [1,2,3,4,5,6];
+        function isOdd(x) {return x % 2 == 1}
+        function filter(fn, array) {
+            var result = [];
+            for(var i=0;i<array.length;i++){
+                console.log("i: " + array[i] + " fn: " + fn(array[i]));
+                if(fn(array[i]) === true){
+                    result.push(array[i])
+                }
+            }
+            return result;
+        }
+
+        function betterFilter(fn, array) {
+            return array.filter(fn);
+        }
+
+        console.log("filter test result: " + filter(isOdd, input));
+        console.log("better filter test result: " + betterFilter(isOdd, input));
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
