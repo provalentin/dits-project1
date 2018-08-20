@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function fibonacci(n) {
+            return n<=1 ? n : fibonacci(n-1) + fibonacci(n-2);
+        }
+        console.log("f(4): " + fibonacci(5));
+        for(var i=5;i<7;i++) {
+            console.log("f(" + i + "): " + fibonacci(i));
+        }
+        function recSum(n) {
+            return n<=1 ? n : n + recSum(n-1);
+        }
+        console.log("S: "+ recSum(13));
+
+        function toBin(n) {
+            return n<=1? n : toBin(n%2 === 0 ? n/2 : (n-1)/2) + "" + n%2;
+        }
+        console.log("binary : " + toBin(11));
+
+        function reverseBinary(n){
+            return toBin(n).split("").reverse().join("");
+        }
+
+        function nod(a, b) {
+            if( b <= 0 ) return Math.abs(a);
+            return nod(b, a % b);
+        }
+
+        console.log("nod(54, 24): " + nod(54,24));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
