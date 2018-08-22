@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // var user = {
+        //     name: "John Doe",
+        //     getName: function() {
+        //         console.log("name: " + this.name);
+        //     }
+        // };
+        // user.getName();
+        ///--------
+        // function bind(func, context) {
+        //     return function() {
+        //         return func.apply(context, arguments);
+        //     };
+        // };
+        // function f() {
+        //     alert(this);
+        // };
+        // var g = bind(f, "Context");
+        // g();//Context
+
+        ///------------------
+        var user = {
+            firstName: "John",
+            sayHi: function() {
+                alert(this.firstName);
+            }
+        }
+        //THIS is not working
+        //setTimeout(user.sayHi, 1000);
+        //BUT this solution is fine
+        //setTimeout(function() {user.sayHi()}, 1000);
+
+        //working solution with bind
+        //setTimeout(bind(user.sayHi, user), 1000);
+
+
+        //another solution - with built-in "bind"
+        //setTimeout(user.sayHi.bind(user), 1000);
+
+
+        //JSON example: String => JSON => String
+
+        console.log("JSON1: " + JSON.stringify({"x": 5, "y" : 7}))
+        console.log("JSON2: " + JSON.stringify([
+            new Number(2),
+            new Number(3.2),
+            new String("asdf"),
+            new Boolean(false)]));
+        var json3 = JSON.parse('{ "x" : 3, "y" : 5.2}');
+        console.log("JSON3: " + JSON.stringify(json3));
+        console.log(json3);
+        console.log(user);
+        console.log(JSON.parse(JSON.stringify(user)));
+        console.log(JSON.stringify(JSON.parse(JSON.stringify(user))));
+
+        ///TRY - CATCH block example
+        try {
+            eval('alert("Hello, World")');
+        } catch(error) {
+            console.error(error);
+        }
+
+        try{
+            var test;
+            console.log(test.test);
+        } catch (error) {
+            console.error(error);
+        }
+
+        function isValidJSON(text) {
+            try{
+                JSON.parse(text);
+                return true;
+            }catch(error) {
+                console.log("parse error: " + error);
+                return false;
+            }
+        }
+
+        console.log(isValidJSON('{ "a" : 3, "b": false }'));
+
+        //Constructor example
+        function Constr() {
+            var that = this;
+            var PrivateValue = "abc";
+            function privateFunction() {
+                privatValue = "xyz";
+                that.publicField = "plm";
+                that.publicMethod() {
+                    //smth
+                };
+            }
+        }
+
+        var obj = function () {
+            //public
+            var that = {
+                publicMethod: function() {
+                    privateValue = "abc";
+                    privateFunction() {
+                        return;
+                    };
+                }
+                publicField: "abc";
+            }
+            //private
+            var privateValue = "bbb";
+            function privateFunction() {
+                privateValue = "prv";
+                that.publicField = "kkk";
+                that.publicMethod : function() {
+                    //do smth;
+                }
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
