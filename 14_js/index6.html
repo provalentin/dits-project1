@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //PROTO sample
+        var human = {name: "John"};
+        var student = {name: "Dow"};
+        student.__proto__ = human;
+
+        console.log(human.name);
+        console.log(student.name);
+        delete student.name;
+        console.log(student.name);
+        delete human.name;
+        console.log(student.name);
+
+        //second PROTO example
+
+        function Person(first, last, age, eleColor) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eyeColor;
+        }
+
+        Person.prototype.name = function() {
+            return this.firstName + " " + this.lastName;
+        }
+
+        var Human = {
+            name: "John",
+            sayName: function () {
+                return this.name;
+            }
+        };
+
+        var Human2 = {
+            name: "Dow",
+
+        };
+        Human2.__proto__ = Human;
+        console.log(Human2);
+        console.log(Human.sayName());
+
+        //another code sample
+        //toString override
+
+        function Dog(name) {
+            this.name = name;
+        }
+
+        var dog1 = new Dog( "Rex");
+
+        Dog.prototype.toString = function dogToString() {
+            return this.name;
+        }
+
+        console.log(dog1.toString());
+
+        var arr = [1,2,3,4,5,6];
+
+        arr.forEach(function (el) {
+            console.log(el);
+        })
+
+        // arr.prototype.forEach = function arrtocons(element) {
+        //     return forEach(element);
+        //
+        // }
+        // arr.forEach();
+
+        //COUNTER sample
+        //....
+
+        //need more js
+
+        var str = "This quick blown fox jumps over lazy dog";
+        var words = str.split(" ");
+
+        console.log(words[4]);
+        var chars = str.split("");
+        console.log(chars[3]);
+
+        //Person, EMPLOYEE, Customer
+        var Person = function (name) {
+            this.name = name;
+            this.canTalk = true;
+        };
+
+        Person.prototype.greet  = function () {
+            if(this.canTalk) {
+                console.log("Hi, I'm " + this.name);
+            }
+        }
+
+
+        var Employee = function (name, title) {
+            Person.call(this, name);
+            this.title = title;
+
+        }
+
+        Employee.prototype = Object.create(Person.prototype);
+
+        Employee.prototype.greet = function () {
+            if(this.canTalk) {
+                console.log("Hi, I'm " + this.name + " " + this.title);
+            }
+        }
+
+        var Customer = function (name) {
+            Person.call(this, name);
+        }
+
+        Customer.prototype = Object.create(Person.prototype);
+
+        var Mime = function (name) {
+            Person.call(this, name);
+            this.canTalk = false;
+        }
+
+        Mime.prototype = Object.create(Person.prototype);
+
+        var bob = new Employee("Bob", "builder");
+        var joe = new Customer("Joe");
+        var rg = new Employee("Red Green", "handyman");
+        var mike = new Customer("Mike");
+        var mime = new Mime("Mime");
+
+        bob.greet();
+        joe.greet();
+        rg.greet();
+        mike.greet();
+        mime.greet();
+
+
+        //list code sample
+
+        function list(type) {
+            var result = '<' + type + 'l><li>';
+            var args = Array.prototype.slice.call(arguments, 1);
+            result += args.join('</li><li>');
+            result += '</li></' + type + 'l>';
+
+            //document.getElementById("res").innerHTML = result;
+        }
+
+        var listHTML = list("o", "One", "Two", "Three");
+
+        function func() {
+
+            console.log(arguments.length);
+
+        }
+
+        func(10);
+        func(11,12);
+
+        //fucking  proto task
+
+        let head = {
+            glasses: 1
+        };
+
+        let table = {
+            pen: 3
+        }
+
+        let bed = {
+            sheet: 1,
+            pillow: 2
+        }
+
+        let pockets = {
+            money: 2000
+        }
+
+        pockets.__proto__ = bed;
+        bed.__proto__ = table;
+        table.__proto__ = head;
+        //proto<abbr
+        //pockets -> bed -> table -> head
+
+        console.log(bed.glasses);
+        console.log(pockets.pillow);
+
+        //JS DOC
+        /* Этот метод делает что-то хорошее
+        * @name MethodClassName
+        * @param сюда пишем параметры, которые нужно использовать
+        * @returns здесь описываем результат
+        * @throws сюда пишем исключения
+         */
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
