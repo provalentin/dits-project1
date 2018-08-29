@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*var obj = {name: "car"};
+        var obj2 = {name3: "plane"};
+        obj2.__proto__ = obj;
+        console.log(obj2.name);
+        function Human (name, age) {
+            this.name = name;
+            this.age = age;
+
+            //Метод в прототипе
+            Human.prototype.info = function () {
+                console.log(this.name + ", " + this.age);
+            }
+
+            Human.prototype.study = function () {
+                console.log(this.name + " учится");
+            }
+        }
+        function Student(name, age) {
+            Human.apply (this, arguments);
+            //this.name = name;
+            //this.age = age;
+        }
+
+        Student.prototype = Object.create(Human.prototype);
+        //Student.prototype = new Human();
+
+        Student.prototype.constructor = Student;
+
+        Student.prototype.study = function(){
+            Human.prototype.study.apply(this);
+            console.log(this.name + " делает вид, что учится");
+        }
+
+
+        //var human = new Human ()
+        var student = new Student("Jin", 21);
+        student.study();
+
+        function Hamster() {
+            this.food = []
+        }
+        Hamster.prototype = {
+            food: [],
+            found: function (something) {
+                Hamster.prototype.food.push(something);
+            }
+        }
+
+        speedy = new Hamster();
+        lazy = new Hamster();
+
+        speedy.found("apple");
+        speedy.found("cabbage");
+
+        speedy.food = Hamster.prototype.food;
+        lazy.food = Hamster.prototype.food;
+
+        console.log(speedy.food);
+        console.log(lazy.food);
+        console.log(Hamster.prototype.food);
+
+        function Human (name, age) {
+            this.name = name;
+            this.age = age;
+        }
+            //Метод в прототипе
+            Human.prototype = {
+                sleep: '',
+                goSleep: function () {
+                    Human.prototype.sleep = 'sleep';
+                }
+            }
+
+        function Student(name, age) {
+            Human.apply (this, arguments);
+            //this.name = name;
+            //this.age = age;
+        }
+
+        Student.prototype = Object.create(Human.prototype);
+        //Student.prototype = new Human();
+
+        Student.prototype.constructor = Student;
+
+        var student1 = new Student("Jin", 21);
+        var worker = new Human("John", 50);
+        var student2 = new Student("Mike", 19);
+
+        worker.goSleep();
+
+        console.log(student1.sleep);
+        console.log(student2.sleep);
+        console.log(worker.sleep);
+
+        function Student(name, lastname, age) {
+            this.name = name;
+            this.lastName = lastname;
+            this.age = age;
+        }
+
+        student = new Student('Mark', 'Zuck', 30);
+
+        Student.prototype.toString = function nameToString() {
+            return this.name + " " + this.lastName + ", " + this.age;
+        }
+
+        console.log(student.toString());
+        //console.log(student.name);
+
+        function copy(obj) {
+            const copy = Object.create(Object.getPrototypeOf(obj));
+            const propNames = Object.getOwnPropertyNames(obj);
+
+            propNames.forEach(function(name) {
+                const desc = Object.getOwnPropertyDescriptor(obj, name);
+                Object.defineProperty(copy, name, desc);
+            });
+
+            return copy;
+        }
+
+        const obj1 = {q: 1, f: {z: 4, g: {k: 9}}};
+        const obj2 = copy(obj1);
+        console.log(obj2);
+
+        var words = ["one", "two", "three", "four"];
+        words.forEach(function (word) {
+            console.log(word);
+            if (word === "two") {
+                words.shift();
+            }
+        })
+        console.log(words);
+
+        var str = "Another brick in the wall";
+        var res = str.split("t");
+        console.log(res);*/
+
+        var str = "résumé";
+        var strReverse = str.split('').reverse().join('');
+        console.log(strReverse);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
