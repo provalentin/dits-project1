@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<header id="my-header">
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Main</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <aside>
+        <!--side content here -->
+    </aside>
+</main>
+
+<footer>
+    <p class="footer-text">
+        <string>Phone: +1(234)567-8900</string>
+    </p>
+</footer>
+
+
+<script>
+    var head = document.firstChild;
+    console.log(head);
+    var header = document.getElementById("my-header");
+    console.log("my header: " + header);
+    console.log("my header: " + header.innerHTML);
+    console.log("my header: " + header.innerText);
+    var docParts = document.documentElement.children;
+    console.log("document parts: " + docParts);
+    console.log("document parts: " + docParts.innerText);
+    var byClass = document.getElementsByClassName("footer-text");
+    console.log(byClass);
+    console.log(byClass[0]);
+    var byTag = document.getElementsByTagName("ul");
+    console.log(byTag);
+
+    var children = document.getElementsByTagName("aside")[0].childNodes;
+    console.log(children);
+    var comments = [];
+
+    for (var i=0, len=children.length; i<len; i++) {
+        if (children[i].nodeType == Node.COMMENT_NODE) {
+            comments.push(children[i]);
+        }
+    }
+    console.log(comments);
+    var textComments = document.getElementsByTagName("aside")[0].innerText;
+
+    console.log(textComments);
+
+
+</script>
+</body>
+</html>
