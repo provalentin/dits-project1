@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function add(a, b) {
+        return a + b;
+    }
+
+    function partialAdd(fn) {
+        if (typeof fn !== 'function') {
+            throw new Error('First arg is not a function');
+        }
+        //Keep all arguments except function
+        var stored_args = [].slice.call(arguments, 1);
+        return function () {
+            var new_args = [].slice.call(arguments);
+            return fn.apply(null, stored_args.concat(new_args));
+        };
+    }
+
+    function simplePartial(fn) {
+        var new_args = [];
+        new_args.push(arguments[0]);
+        return function() {
+            return fn.apply(null, new_args);
+        }
+    }
+
+    var add5 = simplePartial(5);
+    console.log(add5);
+
+    console.log("simple partial: " + simplePartial(5));
+
+    var newadd = partialAdd(add, 5);
+    console.log("new add: " + newadd(4)); // 9
+
+    //second task with undefined
+
+    function testFunc(a, b, c, d) {
+        return "a=" + a + " b=" + b + " c= " + c + " d=" + d;
+    }
+
+    function partialDeep(fn) {
+        if (typeof fn !== 'function') {
+            throw new Error('First arg is not a function');
+        }
+        //Keep all arguments except function
+        var stored_args = [].slice.call(arguments, 1);
+        return function() {
+            var new_args = [].slice.call(arguments);
+            var new_args_counter = 0;
+            var stored_args_copy = [];
+            //debugger;
+            for(var i = 0; i< stored_args.length; i++){
+                //console.log("arg#" + i + " " + stored_args[i]);
+                if(stored_args[i] === undefined) {
+                    stored_args_copy.push(new_args[new_args_counter]);
+                    new_args_counter++;
+                } else {
+                    stored_args_copy.push(stored_args[i]);
+                }
+            }
+            var new_args_unused = new_args.slice(new_args_counter);
+            // console.log(new_args);
+            // console.log(new_args.slice(1));
+            // console.log(new_args_unused);
+            return fn.apply(null, stored_args_copy.concat(new_args_unused));
+        }
+    }
+
+    var test1_3 = partialDeep(testFunc, 1, undefined, 3);
+    console.log("partialDeep(5)=" + test1_3(5));
+    console.log("partialDeep(3,4)="+test1_3(4, 5));
+
+
+    //BURGER tasks
+    var makeError = function(error) {
+        throw new Error(error);
+    }
+
+    var Burger = function(size, type) {
+        this.size = null
+        this.type = null;
+        this.additionals = [];
+        if(!(size in Burger.SIZE)) {
+            makeError("Invalid size");
+        }
+        this.size = size;
+
+        if(!(type in Burger.TYPE)){
+            makeError("Invalid type");
+        }
+        this.type = type;
+    }
+
+    Burger.SIZE = {
+        big : {price: 100, cal: 60},
+        medium : {price: 75, cal: 50},
+        small : {price: 50, cal: 40}
+
+    }
+    Burger.TYPE = {
+        cheese : {price: 10, cal: 20},
+        salad : {price: 20, cal: 5},
+        fries : {price: 15, cal: 10}
+    }
+    Burger.ADDITIONALS = {
+        ketchup: {price: 15, cal : 0},
+        mayonez:  {price: 20, cal: 5}
+    }
+
+    Burger.prototype.getPrice = function() {
+        var totalPrice=0;
+        var arr = this.additionals;
+        for(var i in arr) {
+            console.log(Burger.ADDITIONALS[arr[i]])
+            totalPrice += Burger.ADDITIONALS[arr[i]].price;
+        }
+        //console.log("price sum = " + totalPrice);
+        return Burger.SIZE[this.size].price + Burger.TYPE[this.type].price + totalPrice;
+    }
+
+    Burger.prototype.getCalories = function() {
+        var totalCal=0;
+        var arr = this.additionals;
+        for(var i in arr) {
+            console.log(Burger.ADDITIONALS[arr[i]])
+            totalCal += Burger.ADDITIONALS[arr[i]].cal;
+        }
+        //console.log("cal sum = " + totalCal);
+        return Burger.SIZE[this.size].cal + Burger.TYPE[this.type].cal + totalCal;
+    }
+    Burger.prototype.addAdditionals = function(type){
+        this.additionals.push(type);
+    }
+
+    var myBurger = new Burger("big", "salad");
+    myBurger.addAdditionals("ketchup");
+    myBurger.addAdditionals("mayonez");
+
+
+    console.log(Burger.SIZE.big);
+
+    console.log(myBurger);
+    console.log(myBurger.getPrice());
+    console.log(myBurger.getCalories());
+
+
+</script>
+</body>
+</html>
