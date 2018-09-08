@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="ajaxButton" type="button">Make a request</button>
+<div id="block"></div>
+<script>
+    /*function preloader(){
+        if (document.images) {
+            var img1= new Image();
+            var img2 = new Image();
+            var img3 = new Image();
+
+            img.src = "http://example.com/img/img1.jpg";
+            img.src = "http://example.com/img/img2.jpg";
+            img.src = "http://example.com/img/img3.jpg";
+        }
+    }
+
+    function addEventListener(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != 'function') {
+            window.onload = func;
+        } else {
+            window.onload = function () {
+                if (oldonload) {
+                    oldonload();
+                }
+                func();
+            }
+        }
+    }
+    addEventListener(preloader);
+
+    var xhr = new XMLHttpRequest();
+        method = "GET";
+        url = "https://price.ua";
+
+
+    xhr.open(method, url, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("Perfect!");
+        }
+    };
+    xhr.send();
+
+    (function(){
+        var httpRequest;
+        document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+
+        function makeRequest(){
+            httpRequest = new XMLHttpRequest()
+
+            if (!httpRequest) {
+                alert('Something went wrong!');
+                return false;
+            }
+            httpRequest.onreadystatechange = alertContents;
+            httpRequest.open('DELETE', 'test.html');
+            httpRequest.send();
+        }
+        function alertContents() {
+            if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                if (httpRequest.status === 200) {
+                    console.log(httpRequest.responseText);
+                } else {
+                    alert ("Something went wrong!");
+                }
+            }
+        }
+    })();
+*/
+/*
+    fetch('https://dog.ceo/api/breeds/image/random')
+        .then(function (response) {
+            return response.json();
+        })
+        .then (function (myJSON) {
+            console.log(JSON.stringify(myJSON));
+        });
+*/
+
+/*
+    fetch("https://dog.ceo/api/breeds/image/random")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            url = data.message;
+            image = document.createElement("img");
+            image.src = url;
+            document.getElementById('block').appendChild(image);
+        })
+        .catch(alert);
+    */
+
+/*
+    let promise = new Promise((resolve, reject) => {
+        setTimeout(function () {
+            resolve("It worked!")
+        }, 250);
+    });
+
+    promise.then((successMessage) =>{
+        console.log("Yeah! " + successMessage);
+    });
+    */
+    function z(){
+        return fetch('https://dog.ceo/api/breeds/image/random').then((response) => {
+            if (response.headers.get('content-type') != 'application/json'){
+                throw new TypeError();
+            }
+
+            var j = response.json();
+            console.log(j);
+            return j;
+        });
+    }
+    z();
+
+</script>
+</body>
