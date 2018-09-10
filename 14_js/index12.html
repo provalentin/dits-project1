@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.6.2.css">
+</head>
+<body>
+
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<input type="text" id="number_a">
+<input type="text" id="number_b">
+<select name="operation" id="operation">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+<input id="result">
+<button onclick="getResult()" >Calculate!</button><br>
+<div id="validation"></div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/qunit/qunit-2.6.2.js"></script>
+
+<script>
+    QUnit.test( "a basic test example", function( assert ) {
+      var value = "hello";
+      assert.equal( value, "hello", "We expect value to be hello" );
+      assert.ok( 10 > 5, "Passed!" );
+    });
+    function getResult() {
+        var a = document.getElementById("number_a").value;
+        var b = document.getElementById("number_b").value;
+        var op = document.getElementById("operation").value;
+        console.log("a=" + a + " b=" + b + " op=" + op);
+        var result = calculate(a, b, op);
+        console.log("result: " + result);
+        document.getElementById("result").value = "result is"  ;
+        document.getElementById("result").value = result;
+    }
+</script>
+<script type="text/javascript" src="./calculator.js"></script>
+<script type="text/javascript" src="./calculator_test.js"></script>
+</body>
+</html>
