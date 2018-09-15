@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .lala {
+            background-color: blue;
+        }
+        .blabla{
+            text-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div id="#test"> some text here</div>
+<script>
+    //styles: using class name
+    var el = document.getElementById("#test");
+    console.log(el);
+    console.log(el.className.length);
+    console.log(el.classList.length);
+    el.className = "lala";
+    console.log(el.className.length);
+    el.classList.add("blabla")
+    console.log(el.classList);
+    console.log(el.className);
+    var l = el.classList;
+    for(var i=0;i<l.length;i++) {
+        console.log(l[i]);
+    }
+    el.classList = [];
+    console.log(el.classList);
+
+    el.className = "";
+    console.log(el.className.length);
+
+    //style: using element "style" attibute
+    console.log(el.style);
+    el.style.backgroundColor = "red";
+    el.style.сolor = "white";
+    el.style.textColor = "white";
+    el.style.fontColor = "white";
+    el.style.size = "30px";
+    console.log(el.style);
+
+
+
+</script>
+</body>
+</html>
