@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button class="button_class">1</button>
+<button class="button_class">2</button>
+<button class="button_class">3</button>
+<button class="button_class">4</button>
+<button class="button_class">5</button>
+
+<script>
+    var buttons = document.getElementsByClassName("button_class");
+    console.log(buttons);
+    for(var i = 0;i<buttons.length;i++) {
+        //buggy code:
+        //buttons[i].onclick = function() {
+        //    console.log(i);
+        //}
+
+
+        var func = function(index) {
+            var i = index
+            return function() {
+                console.log()
+            }
+        }
+        buttons[i].onclick = func(i);
+        console.log(buttons[i]);
+
+        //ES6 variant
+        //buttons[i].onclick = ()->console.log(i);
+    }
+
+    //setTimeout example
+
+    var f = setTimeout(function(){console.log("hi timeout")}, 2000);
+    //setInterval example
+    var interval = setInterval(function(){console.log("hi interval")}, 1000);
+    clearInterval(interval);
+
+    //context, global object
+    console.log(this);
+
+    //use example
+    var user = {
+        name: "Vitia",
+        age: 25,
+        description: function() {
+            return "I am " + this.name + " , I am " + this.age;
+        }
+    }
+
+    var user2 = {
+        name: "IVAN",
+        age: 18
+    }
+    //buggy code
+    //setTimeout(name.description, 1000);
+    //correct code
+    setTimeout(user.description.bind(user),100);
+
+    //descriptors
+    var user3 = {};
+    user3.name = "Petia";
+    Object.defineProperty(user3, "name", {value: "Kolya", writable:false, configurable: false});
+    console.log(user.name);
+    delete user.name;
+    console.log(user.name);
+
+    //constructor
+    function Animal(name) {
+        this.name = name;
+        this.showThis = function() {
+            console.log(this);
+            console.log(this.name);
+        }
+        //console.log(this);
+    }
+    var rabbit = new Animal("rabbbbit");
+    rabbit.showThis();
+
+
+
+</script>
+</body>
+</html>
