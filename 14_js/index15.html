@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    "use strict";
+    //HOME TASK : STUDENT
+
+
+    function Student(obj) {
+        this.name = obj.name;
+        this.surname = obj.surname;
+        this.grades = obj.grades;
+        this.fullName = function(){
+            return this.name + " " + this.surname;
+        }
+
+        this.gradesAvarage = function() {
+            var sum = 0;
+            if(this.grades.length===0)
+                return 0;
+            for(var i=0;i<this.grades.length;i++){
+                sum += this.grades[i];
+            }
+            return sum / this.grades.length;
+
+        }
+
+        this.fullInfo = function(){
+            return this.name + " " + this.surname + ". Grades avg: " + this.gradesAvarage().toFixed(2);
+        }
+        //HOW TO CREATE EMPTY ARRAY?
+        if(Student.group === undefined) {
+            console.log("group is undefined");
+            Student.group = [];
+        }
+        //anyway add new student
+        Student.group.push(this);
+
+        if(Student.bestStudent === undefined) {
+            Student.bestStudent = this;
+        }else{
+            if(this.gradesAvarage() > Student.bestStudent.gradesAvarage()){
+                Student.bestStudent = this;
+            }
+        }
+
+        Student.showAllStudents = function() {
+
+        }
+
+        Student.showBestStudent = function() {
+            return Student.bestStudent.name + " "
+                + Student.bestStudent.surname + " is the Best student. Grades avg: "
+                + Student.bestStudent.gradesAvarage().toFixed(2);
+        }
+        //return this; //DO WE NEED THIS???
+    }
+
+    var student1 = new Student ({name: 'Ivan', surname: 'Ivanov', grades: [4,5,5]});
+    var student2 = new Student ({name: 'Semen', surname: 'Semenov', grades: [3,5,5]});
+    var student3 = new Student ({name: 'Petr', surname: 'Petrov', grades: [4,3,5]});
+
+    console.log(student1);
+    console.log(student2.fullInfo());
+    console.log(student3);
+    console.log(Student.group);
+
+    console.log (Student.showAllStudents());
+    console.log (Student.showBestStudent());
+    console.log (Student.bestStudent);
+
+
+</script>
+</body>
+</html>
