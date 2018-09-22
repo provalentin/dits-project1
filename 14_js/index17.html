@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="string_to_match">###</p>
+<button id="button_0">0</button>
+<button id="button_1">1</button>
+<button id="button_2">2</button>
+<button id="button_3">3</button>
+<button id="button_4">4</button>
+<br>
+<p id="result">***</p>
+
+
+<script>
+    var letters = [];
+    // function generateLetters() {
+    //     for(var i=0;i<26;i++){
+    //         letters.push(String.fromCharCode("a".charCodeAt(0)+i));
+    //     }
+    // }
+    // generateLetters();
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;;
+    }
+
+    function getRandomChar() {
+        return String.fromCharCode("a".charCodeAt(0)+getRandomInt(0,26));
+    }
+
+    console.log(letters);
+
+    var arr = [];
+    var totalAnswerCounter = 0;
+    var correctAnswerCounter = 0;
+    var userAnswer = -1;
+    function countMatch() {
+        var matchCounter = 0;
+        for(var i=0;i<4;i++){
+            //console.log(arr[i][0] + " : " + arr[i][1]);
+            if(arr[i][0] === arr[i][1]) {
+                matchCounter++;
+            }
+        }
+        return matchCounter;
+    }
+
+    function arrToString() {
+        var resultString = "";
+        for(var i=0;i<4;i++){
+            resultString += " [" + arr[i][0] + " : " + arr[i][1] + "]        ";
+        }
+        return resultString;
+    }
+
+
+    function init() {
+        arr = [];
+        for(var i=0;i<4;i++){
+            var newArr = [];
+            newArr.push(getRandomChar());
+            if(getRandomInt(0,100) % 2 == 0) {
+                newArr.push(getRandomChar());
+            } else {
+                newArr.push(newArr[0]);
+            }
+            arr.push(newArr);
+        }
+        console.log(arrToString());
+    }
+
+    function buttonClickHandler (button_index) {
+        totalAnswerCounter++;
+        userAnswer = button_index;
+        console.log("button pressed: " + button_index );
+        if(userAnswer === countMatch()) {
+            console.log("Correct!");
+            correctAnswerCounter++;
+        }else{
+            console.log("Wrong Answer!");
+        }
+        document.getElementById("result").innerHTML =
+            "Correct: "+ correctAnswerCounter
+            + ", Wrong: " + (totalAnswerCounter - correctAnswerCounter)
+            + ", Total: " + totalAnswerCounter;
+        init();
+        document.getElementById("string_to_match").innerHTML = arrToString();
+    }
+
+    init();
+    console.log(arrToString());
+    document.getElementById("string_to_match").innerHTML = arrToString();
+    console.log("match count: " + countMatch());
+
+
+    document.getElementById("button_0").onclick = function() {
+        buttonClickHandler(0);
+    }
+    document.getElementById("button_1").onclick = function() {
+        buttonClickHandler(1);
+    }
+    document.getElementById("button_2").onclick = function() {
+        buttonClickHandler(2);
+    }
+    document.getElementById("button_3").onclick = function() {
+        buttonClickHandler(3);
+    }
+    document.getElementById("button_4").onclick = function() {
+        buttonClickHandler(4);
+    }
+
+
+</script>
+</body>
+</html>
