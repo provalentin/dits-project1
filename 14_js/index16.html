@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function getCount(arr){
+        return Object.keys(arr).length;
+
+    }
+    var test1 = {a:1, b:2, c:3};
+    console.log(getCount(test1));
+
+    var test2 = function(){};
+    console.log(getCount(test2));
+
+    var test3 = [1,2,3,4];
+    console.log(getCount(test3));
+
+    var test4 = [];
+    test4[100] = 1;
+    console.log(getCount(test4));
+
+    function getField(obj, fieldName) {
+        var result = [];
+        var count = Object.keys(obj).length;
+        for(var i=0;i<count;i++) {
+            result.push(obj[i][fieldName]);
+        }
+        return result;
+    }
+
+    var test5 = [
+        {'firstName' : 'test1', 'secondName':'test2'},
+        {'firstName' : 'test3', 'secondName':'test4'}];
+    console.log(getField(test5,'firstName'));
+
+    function createCounter(initialValue=0, step=1) {
+        //small hack for initial value
+        var internal = initialValue - step;
+        return function() {
+            internal += step;
+            return internal;
+        }
+    }
+
+    var counter = createCounter(10, 3);
+    var counter2 = createCounter(7, 1);
+
+    console.log(counter());
+    console.log(counter());
+    console.log(counter2());
+    console.log(counter());
+    console.log(counter2());
+
+    function pick(cntr, steps) {
+        var result = [];
+        for(var i=0;i<steps;i++){
+            result.push(cntr());
+        }
+        return result;
+    }
+
+    console.log(pick(counter,5));
+    function square(x) {return x*x};
+    function map(func, arr) {
+        var result = [];
+        for(var i=0;i<arr.length;i++){
+            //console.log(arr[i]);
+            result.push(func(arr[i]));
+        }
+        return result;
+    }
+    console.log(map(square,[1,2,3,4]));
+    console.log(map(square,[]));
+    var input = [1,2,3,4,5,6];
+
+    function isOdd(x) {return x % 2 === 1}
+
+    function filter(func, arr) {
+        var result = [];
+        for(var i=0;i<arr.length;i++){
+            if(func(arr[i])) {
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    }
+
+    console.log(filter(isOdd, input));
+
+</script>
+</body>
+</html>
