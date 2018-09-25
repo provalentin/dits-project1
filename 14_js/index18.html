@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn"></button>
+
+<script>
+    'use strict'
+
+    var person = {
+        name : "Ton"
+    }
+    var func = function() {
+        if(this !== undefined) {
+            console.log("Hello " + this.name);
+        } else {
+            console.log("this is udefined");
+        }
+    }
+
+    func.call(person);
+    func(person);
+
+    var a =[1,2,3];
+
+    function logArray(tag) {
+        console.log(this);
+        console.log(tag + this);
+    }
+
+    logArray.call(a, "MY Array: " );
+
+    var obj = {
+        testKey: "test"
+    }
+
+    function func2() {
+        if(this!== undefined)
+            console.log(this.testKey);
+    }
+    func2();
+    func2.call(obj);
+
+
+    //Human-Student example
+    function Human(firstName, secondName){
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.showContext = function() {
+            console.log(this);
+        }
+    }
+
+    function Student(){
+        Human.apply(this);
+    }
+
+    var student1 = new Student("test1", "test2");
+
+    console.log("..." + student1.firstName);
+    console.log("...." + student1.secondName);
+
+    //setTimeout
+
+    var obj = {
+        name: "Oleg",
+        showMe: function(){
+            console.log(this.name);
+        }
+    }
+
+    var btn = document.getElementById("btn");
+
+
+    btn.onclick = obj.showMe.bind(obj);
+    btn.onclick = function(){ obj.showMe() }
+
+    //NOT WORKING PROPERLY
+    //btn.onclick = obj.showMe();
+
+    //animals example
+
+    function Animals(arr) {
+        this.animals = arr
+        this.pig = null
+        this.findPig = function () {
+            this.animals.forEach(function (animal) {
+                if(animal === 'pig'){
+                    this.pig = animal
+                }
+            }.bind(this))
+            console.log(this.pig)
+        }
+    }
+
+    var anms = ['cat','cow', 'dog', 'pig']
+
+    var VillageYard = new Animals(anms)
+
+    VillageYard.findPig()
+
+    //save object to locl storage
+    var obj = {
+        name: 'Oleh'
+    }
+
+    localStorage.setItem('obj', JSON.stringify(obj))
+
+    var getObject = localStorage.getItem('obj')
+
+    console.log(JSON.parse(getObject))
+
+
+    //try-catch-finally block
+
+    try {
+        var name = localStorage.getItem('name')
+        console.log(name)
+        if(!name) {
+            throw new SyntaxError("Данные некорректны");
+        }
+    } catch (e) {
+        alert(e)
+    }
+
+    //user test
+    var user = {
+        firstName : "Ivan",
+        lastName: "Ivanov"
+    }
+    console.log(user);
+    var userString = JSON.stringify(user);
+    console.log(userString);
+    var userJSON = JSON.parse(userString);
+    console.log(userJSON);
+
+    //parse failure
+
+    try{
+        //console.log(user);
+        var newUserString = JSON.stringify(user) + 123;
+        //console.log(newUserString);
+        var parseFail = JSON.parse(newUserString);
+    }catch(e){
+        console.log("error: " + e   );
+    }
+
+
+
+</script>
+</body>
+</html>
