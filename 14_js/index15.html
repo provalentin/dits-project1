@@ -16,6 +16,7 @@
         this.name = obj.name;
         this.surname = obj.surname;
         this.grades = obj.grades;
+        this.averageGrade = 0;
         this.fullName = function(){
             return this.name + " " + this.surname;
         }
@@ -27,6 +28,7 @@
             for(var i=0;i<this.grades.length;i++){
                 sum += this.grades[i];
             }
+            this.averageGrade = sum / this.grades.length;
             return sum / this.grades.length;
 
         }
@@ -51,8 +53,10 @@
         }
 
         Student.showAllStudents = function() {
-            //NEED TO SORT THIS ARRAY BY AVG GRADE
-            //console.log(Student.group);
+            Student.group.sort(function(a,b){
+                return b.averageGrade - a.averageGrade;
+
+            })
             return Student.group;
         }
 
