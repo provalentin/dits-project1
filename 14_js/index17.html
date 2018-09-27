@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+
+        div.a {
+            display: block;
+            width: 20px;
+            height: 30px;
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            font-size: 20px;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -16,6 +31,13 @@
 <p id="result">***</p>
 
 
+<div>
+    <div id="div_1" class="a" >Я</div>
+    <div id="div_2" class="a" >R</div>
+    <div id="div_3" class="a" >Я</div>
+    <div id="div_4"  class="a" >R</div>
+</div>
+<div id="rotate_button">ROTATE ME</div>
 <script>
     var letters = [];
     // function generateLetters() {
@@ -113,6 +135,15 @@
     document.getElementById("button_4").onclick = function() {
         buttonClickHandler(4);
     }
+
+    document.getElementById("rotate_button").onclick = function(){
+        // console.log("rotate me " + getRandomInt(0,90));
+        // var angle = getRandomInt(0,90);
+        document.getElementById("div_1").style.transform = "rotate(" + getRandomInt(0,180) + "deg)";
+        document.getElementById("div_2").style.transform = "rotate(" + getRandomInt(0,180) + "deg)";
+        document.getElementById("div_3").style.transform = "rotate(" + getRandomInt(0,180) + "deg)";
+        document.getElementById("div_4").style.transform = "rotate(" + getRandomInt(0,180) + "deg)";
+    };
 
 
 </script>
