@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //JS proto practice
+    var human = {
+        speak: function(){
+            console.log("I can speak");
+        }
+    }
+
+    var student = {
+        learn: function(){
+            console.log("I can learn");
+        }
+    }
+    student.__proto__ = human
+    student.speak()
+    delete student.speak
+    student.speak()
+
+    for(key in student) {
+        if(student.hasOwnProperty(key)) {
+            console.log(key);
+        }
+    }
+
+    //zoo-proto example
+
+    var animal = {
+        name: "Imia",
+        printName: function(){
+            console.log("animal name: " + name);
+        }
+    }
+
+    var tiger = {
+        rrr: function(){
+            console.log("RRR");
+        }
+    }
+
+    var cat = {
+        miau: function(){
+            console.log("miau");
+        }
+    }
+    console.log("cat name: " + cat.name);
+    tiger.__proto__ = animal
+    cat.__proto__ = tiger
+    console.log("cat name: " + cat.name);
+
+    //prototype example
+
+    function Animal() {
+        this.run = function(){
+            console.log("I can run");
+        }
+    }
+
+    Animal.prototype.jump = function(){
+        console.log("I can jump");
+    }
+
+    var Rabbit = new Animal();
+    Rabbit.jump();
+    Rabbit.run()
+
+    //HUMAN_STUDENT TUTORIAL
+
+    function Human(name){
+        this.name = name;
+        //this.showName = function(){
+        //    return this.name;
+        //}
+    }
+    var h1 = new Human("homo sapiens");
+    var h2 = new Human("monkey");
+    Human.prototype.showName = function(){
+        return this.name;
+    }
+    console.log(h1.showName());
+    console.log(h1.name);
+    console.log(h2.showName());
+
+
+</script>
+</body>
+</html>
