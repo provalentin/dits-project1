@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+
+    var mul = function(a,b){
+        console.log(arguments);
+    }
+
+    var addd = mul.bind(null, 2);
+
+    var sum = addd(5);
+    console.log(sum);
+
+    //1st example
+    var add = function(a,b) {
+        return a+b;
+    }
+
+    var partial = function(f, a){
+        return f.bind(null, a);
+    }
+
+    var add5 = partial(add, 5);
+    console.log(add5(1));
+    console.log(add5(8));
+
+    //2nd example
+
+    var testFunc = function(a,b,c) {
+        return "a=" + a + " b= " + b + " c= " + c;
+    }
+
+    var partialDeep = function(f, arg1, arg2, arg3){
+        //var oldArgs = [arg1, arg2, arg3];
+        //var oldArgs = Array.prototype.slice.call(arguments, 1);
+        var oldArgs = [].slice.call(arguments, 1);
+        console.log(oldArgs);
+        return function(arg) {
+            var newArgs = [];
+            for(var i =0;i<oldArgs.length;i++) {
+                if(oldArgs[i]===undefined) {
+                    newArgs.push(arg);
+                } else {
+                    newArgs.push(oldArgs[i]);
+                }
+            }
+            return f.apply(this, newArgs);
+        };
+
+    }
+
+    var test1_3 = partialDeep(testFunc, 1, undefined, 3);
+
+    console.log(test1_3(5)); //a=1, b = 5, c = 3;
+
+    //Burges example
+
+    var BURGER_SIZE = {
+        SMALL: {
+            price: 50,
+            kcal: 40
+
+        },
+        BIG: {
+            price: 100,
+            kcal: 60
+        }
+    }
+
+    var BURGER_INGREDIENT = {
+        CHEESE: {
+            price: 10,
+            kcal: 20
+        },
+        SALAD: {
+            price: 20,
+            kcal: 5
+        },
+        FRIES: {
+            price: 15,
+            kcal: 10
+        }
+    }
+
+    var BURGER_SUPPLEMENT = {
+        KETCHUP: {
+            price: 15,
+            kcal: 0
+        },
+        MAYO: {
+            price: 20,
+            kcal: 5
+        }
+
+    }
+
+    function Hamburger(size, ingredient) {
+        this.size = size;
+        this.ingredient = ingredient;
+        this.supplement = '';
+
+        this.showEnergy = function(){
+            var result = BURGER_SIZE[this.size].kcal
+                + BURGER_INGREDIENT[this.ingredient].kcal;
+            if(BURGER_SUPPLEMENT[this.supplement]) {
+                result += BURGER_SUPPLEMENT[this.supplement].kcal;
+            }
+            return result;
+
+        }
+
+        this.showPrice = function() {
+            var result = BURGER_SIZE[this.size].price
+                + BURGER_INGREDIENT[this.ingredient].price
+            if(BURGER_SUPPLEMENT[this.supplement]) {
+                result += BURGER_SUPPLEMENT[this.supplement].price;
+            }
+            return result;
+        }
+        this.addSupplement = function(supplement) {
+            this.supplement = supplement;
+        }
+    }
+
+    console.log(BURGER_SIZE);
+    console.log(BURGER_INGREDIENT);
+    console.log(BURGER_SUPPLEMENT);
+
+    var burger1 = new Hamburger("SMALL", 'CHEESE');
+    burger1.addSupplement('MAYO');
+    console.log(burger1);
+    console.log("Price: " + burger1.showPrice());
+    console.log("Calories: " + burger1.showEnergy());
+
+    var burger2 = new Hamburger("BIG", 'SALAD');
+    console.log(burger2);
+    console.log("Price: " + burger2.showPrice());
+    console.log("Calories: " + burger2.showEnergy());
+
+
+    //check initial info
+    this.currentBurger = {
+        small: false,
+        big: false,
+        cheese: false,
+        chips: false,
+        salad: false,
+        flavoring: false,
+        moyo: false
+    }
+    this.productInfo = {
+        small: {price: 50, kcal: 40},
+        big: {price: 100, kcal: 60},
+        cheese: {price: 10, kcal: 20},
+        chips: {price: 15, kcal: 10},
+        salad: {price: 20, kcal: 5},
+        flavoring: {price:15, kcal: 0},
+        moyo: {price: 20, kcal: 5}
+    }
+
+    this.checkInfo = function () {
+        if(!this.type) {
+            alert('You dont choose the type of burger')
+        } else if(!(typeof this.type === 'string')){
+            alert("Enter the correct data of burger's type")
+        } else if(this.type !== 'small' && this.type !== 'big') {
+            alert('Enter the correct name of burger')
+        }
+
+        var _neccProd = function (it) {
+            return (it === 'salad' || it === 'cheese' || it === 'chips')
+        }
+        var unknownProd = function (it) {
+            Object.keys(this.productInfo).forEach(function (ing) {
+                return (it === ing)
+            })
+        }
+
+        if(!this.ingrs || !this.ingrs.length) {
+            alert ('You dont enter the ingridients')
+        } else if(!this.ingrs.some(_neccProd)) {
+            alert('Enter the neccecary ingredient')
+        }
+    }
+
+</script>
+</body>
+</html>
