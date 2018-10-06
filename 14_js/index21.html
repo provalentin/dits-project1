@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+    var obj = {
+        firstName: 'Ivan',
+        secondName: 'Ivanov'
+    }
+    function printName(){
+        return this.firstName + " " + this.secondName;
+    }
+    console.log(printName.bind(obj)());
+
+    //forEach example
+    var arr = [1,3,2,4];
+
+    function forEach(arr, func) {
+        var newArr = [];
+        for(var i=0;i<arr.length;i++){
+            newArr.push(func(arr[i]));
+        }
+        return newArr;
+    }
+
+    console.log(forEach(arr, triple));
+
+    function foreach(func) {
+        console.log("custom forEach method");
+        console.log("this = " + this);
+        for(var i=0;i<this.length;i++){
+            func(this[i], i);
+        }
+    }
+
+    function triple(el, index) {
+        return el * 3;
+    }
+
+    Array.forEach = foreach;
+    console.log(Array.forEach);
+    console.log(arr.forEach(triple));
+    console.log(arr.forEach(function(item, index){
+        console.log('anon func over elements item: ' + item + " index: " + index);
+        //return item * item;
+    }));
+
+    //NASLEDOVANIE
+    function Rabbit() {
+
+    }
+
+    Rabbit.prototype.run = function() {
+        console.log("I am running");
+    }
+
+    function newRabbit(){
+
+    }
+
+    newRabbit.prototype = Object.create(Rabbit.prototype);
+    newRabbit.prototype.constructor = newRabbit
+
+    var rab = new newRabbit()
+    rab.run()
+
+
+</script>
+</body>
+</html>
