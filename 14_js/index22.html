@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function Employee( obj){
+        this.firstName = obj.firstName;
+        this.lastName = obj.lastName;
+        this.period = obj.period;
+        this.rate = obj.rate;
+        this.salary = obj.rate * obj.period;
+        this.getSalary = function(){
+            return this.salary;
+        }
+    }
+    var obj1 = {firstName:"Vasiliy", lastName: "Koshevoy", period: 10, rate: 100 };
+
+    var e1 = new Employee(obj1);
+    console.log(e1.getSalary());
+
+    var obj2 = {firstName:"Eric", lastName: "Shmidt", period: 30, rate: 1000 };
+
+    var e2 = new Employee(obj2);
+    console.log(e2.getSalary());
+
+    //private fields usage
+
+    function betterEmployee(obj) {
+        var _firstName = obj.firstName;
+        this.getFirstName = function(){
+            return _firstName;
+        }
+        this.setFirstName = function(firstName){
+            this.firstName = firstName;
+        }
+
+        var lastName = obj.lastName;
+        this.getLastName = function(){
+            return this.lastName;
+        }
+        this.setLastName = function(lastName){
+            this.lastName = lastName;
+        }
+
+        var _paidPeriod = obj.period;
+        this.getPeriod = function(){
+            return _paidPeriod;
+        }
+        this.setPeriod = function(newPeriod){
+            _paidPeriod = newPeriod;
+        }
+
+        var _rate = obj.rate;
+        this.getRate = function(){
+            return _rate;
+        }
+        this.setRate = function(rate){
+            _rate = rate;
+        }
+
+        var _salary = obj.rate * obj.period;
+        this.getSalary = function(){
+            return _salary;
+        }
+
+
+
+    }
+
+    var e3 = new betterEmployee(obj1);
+    console.log(e3.getSalary());
+    var e4 = new betterEmployee(obj2);
+    console.log(e4.getSalary());
+
+
+    //custom string
+    function CustomString(str){
+        this.str = str;
+        this.makeReverse = function(){
+            return str.split("").reverse().join("");
+        }
+        this.capitalizeFirst = function(){
+            return str.charAt(0).toUpperCase() + str.slice(1);
+
+        }
+        this.capitalizeAll = function(){
+            return str.split(" ").map(function(value){
+                return value.charAt(0).toUpperCase() + value.slice(1);
+
+            });
+        }
+
+
+    }
+
+    var cs = new CustomString("some string for test");
+    console.log(cs.makeReverse());
+    console.log(cs.capitalizeFirst());
+    console.log(cs.capitalizeAll());
+
+    //validation
+
+    function CustomValidator() {
+        function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+        this.checkEmail = function(str){
+            console.log("Email validation: " + str);
+            return validateEmail(str);
+        }
+        function checkIsValidDomain(domain) {
+            //console.log("checkIsValidDomain");
+            var re = new RegExp(/^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/);
+            // return domain.match(re);
+            return re.test(domain);
+        }
+        this.checkDomain = function(str){
+            console.log("domain validation: " + str);
+            return checkIsValidDomain(str);
+        }
+        this.checkDate = function(date){
+            console.log("Date validation: " + date);
+            return !isNaN(Date.parse(date));
+        }
+        function isValid(p) {
+            var re = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+            return re.test(p);
+        }
+        this.checkPhone = function(phone){
+            console.log("Phone validation: " + phone);
+            return isValid(phone);
+        }
+
+
+
+    }
+
+    var cv = new CustomValidator();
+    //check email
+    console.log("Email validation");
+    console.log(cv.checkEmail("blabla@gmail.com"));
+    console.log(cv.checkEmail("blabla@gmail..com"));
+    console.log(cv.checkEmail("bla..bla@gmaicom"));
+    //check domain
+    console.log("Domain validation ");
+    console.log(cv.checkDomain("gmail.com"));
+    console.log(cv.checkDomain("mail.google.com"));
+    console.log(cv.checkDomain("mail.google..com"));
+    //check date
+    console.log("Date validation");
+    console.log(cv.checkDate("12/31/1991"));
+    console.log(cv.checkDate("31/12/1991"));
+    console.log(cv.checkDate("31-12-1991"));
+    console.log(cv.checkDate("1991-31-12"));
+    console.log(cv.checkDate("1991-31-13"));
+    console.log(cv.checkDate("2591-31-13"));
+    //check phone
+    console.log("Phone validation");
+    console.log(cv.checkPhone("555-123-4567"));
+    console.log(cv.checkPhone("(555)123-4567"));
+    console.log(cv.checkPhone("5551234"));
+    console.log(cv.checkPhone("+380501234567"));
+    console.log(cv.checkPhone("1234567890"));
+    console.log(cv.checkPhone("+9999999999"));
+
+
+
+</script>
+</body>
+</html>
