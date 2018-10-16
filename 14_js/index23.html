@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    // 1. Создаём новый объект XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // 2. Конфигурируем его: GET-запрос на URL 'phones.json'
+    xhr.open('GET', 'phones.json', false);
+
+    // 3. Отсылаем запрос
+    xhr.send();
+
+    // 4. Если код ответа сервера не 200, то это ошибка
+    if (xhr.status != 200) {
+        // обработать ошибку
+        alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+    } else {
+        // вывести результат
+        //alert( xhr.responseText ); // responseText -- текст ответа.
+        console.log(xhr.responseText);
+    }
+
+    // 'https://codeguida.com/api/v1/posts/?category=programming&o=-moderated_at&tags='
+    fetch('https://codeguida.com/api/v1/posts/?category=programming&o=-moderated_at&tags=')
+        .then(console.log("let's print result here"));
+
+    fetcch.get('https://codeguida.com/api/v1/posts/?category=programming&o=-moderated_at&tags=')
+        .then(function (response) {
+            console.log(response)
+            var html = new GenerateHtml(response.results)
+            html.initApp()
+        })
+    function GenerateHtml(arr) {
+        //init array with data
+        this.array = arr
+        // generate html for one element
+        this.generateElem = function (item, parent) {
+            var div = document.createElement('div'),
+                img = document.createElement('img'),
+                h2 = document.createElement('h2'),
+                p = document.createElement('p')
+            // init attributes and put data to elements
+            div.className = 'elem_wrap'
+            img.src = item['title_images']['600']
+            h2.innerHTML = item.title
+            p.innerHTML = 'The level is ' + item['level_label']
+            //append elements to parent div
+            div.appendChild(img)
+            div.appendChild(h2)
+            div.appendChild(p)
+            //append parent div to global element
+            parent.appendChild(div)
+        }
+    }
+
+</script>
+</body>
+</html>
