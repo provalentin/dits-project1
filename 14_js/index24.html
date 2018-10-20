@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="list">Pokemons: </div>
+<div id="details"></div>
+<script>
+
+    console.log(window.location.hash);
+    function renderPokemonItem(data, index) {
+        //console.log("renderPokemonItem");
+        const div = document.createElement('div');
+        div.innerHTML = `${data.name}: ` + ` <a href="pokemon_details.html#${index}">${data.name} ${data.url} </a>`;
+        //console.log(div);
+        return div;
+    }
+
+    function renderPokemonList(pokeArray) {
+        console.log("renderPokemonList: " + pokeArray[0]);
+        var pokemonsList = document.getElementById("list");
+        for(let i=0;i<10;i++){
+            pokemonsList.appendChild(renderPokemonItem(pokeArray[i], i))
+        }
+    }
+
+    var someData;
+    var pokelist = fetch("https://pokeapi.co/api/v2/pokemon/?limit=10")
+        .then(res=>res.json())
+        .then(data=>data.results)
+        .then(data => renderPokemonList(data))
+        // .then(data=>console.log(data[0].name + " " + data[0].url))
+        .catch(error=>{});
+</script>
+</body>
+</html>

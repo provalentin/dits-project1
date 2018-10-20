@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon Info</title>
+</head>
+<body>
+<div id="info"></div>
+<script>
+    var hash = window.location.hash;
+    var pokemonDetails = fetch("https://pokeapi.co/api/v2/pokemon/" + hash.substring(1) + "/" )
+        .then(res=>res.json())
+        .then(data=>data.abilities)
+        .then(function(data){
+            var el = document.getElementById("info");
+            el.innerText = JSON.stringify(data);
+        })
+        .catch(error=>{});
+</script>
+</body>
+</html>
