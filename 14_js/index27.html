@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    'use sctricl';
+    const obj = {
+        skills: ['first','second'],
+        name: "Name1",
+        second: "2nd",
+        arr: [{secName:"Name2"}, {name: "name3"}, {name: 'name4'}]
+    }
+
+    let firstSkill = obj.skills[0];
+    console.log(firstSkill);
+    let name = obj.name;
+    console.log(name);
+    let [arr, ...rest] = obj.arr;
+    console.log(arr.secName, rest);
+
+    //PROXY
+
+    var proxy = new Proxy(obj, {
+        get(target, prop) {
+            return target[prop]
+        },
+        set(target, prop, value) {
+            target[prop] = value;
+            return true;
+        },
+        has(target, prop) {
+            if(target[prop]){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    })
+
+    console.log(proxy.name);
+    console.log(proxy.second);
+    console.log(proxy.second = "new_second_name");
+    console.log("name" in proxy);
+
+    //MAP (collection)
+    let mappy = new Map();
+    mappy.set(1, "one");
+    mappy.set("two", 2);
+    mappy.set(true, "TRUE");
+
+    console.log(mappy);
+    console.log(mappy.size);
+    console.log(mappy.get(true));
+
+    for(prop of mappy){
+        console.log(prop);
+    }
+
+    //ARROW func
+    var f = () => {}
+
+
+
+</script>
+</body>
+</html>
