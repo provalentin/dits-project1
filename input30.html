@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input id="input" type="text" placeholder="Some data">
+<button id="save">Save data to Local Storage</button>
+<button id="show">Show data from Local Storage</button>
+
+<script>
+    let saveButton = document.getElementById("save");
+    let showButton = document.getElementById("show");
+    let input = document.getElementById("input");
+    saveButton.onclick = function () {
+        localStorage.setItem("text", input.value);
+        //sessionStorage - the same usage, only inside session until user close browser
+        console.log("saved");
+    }
+    showButton.onclick = function() {
+        let data = localStorage.getItem("text");
+        if(data) {
+            console.log("data: " + data);
+        }else {
+            console.log("data is empty");
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>
