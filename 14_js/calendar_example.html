@@ -18,7 +18,6 @@
             var day = dateNow.getDate();
             var year = dateNow.getFullYear();
 
-
             //Determing if February (28,or 29)
             if (month == 1){
                 if ( (year%100!=0) && (year%4==0) || (year%400==0)){
@@ -28,12 +27,48 @@
                 }
             }
 
-
             // names of months and week days.
             var monthNames = ["January","February","March","April","May","June","July","August","September","October","November", "December"];
             var dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday", "Saturday"];
             var dayPerMonth = ["31", ""+FebNumberOfDays+"","31","30","31","30","31","31","30","31","30","31"]
 
+
+            //some data for test
+            let today = new Date();
+            console.log(today);             // Sat Nov 3 2018 ...
+            console.log(today.getDate());   //3  1..31
+            console.log(today.getDay());    //6  0..6
+            console.log(today.getMonth());  //10 0..11
+            console.log(today.getFullYear()); // 2018
+            console.log(today.getVarDate);
+            //for current month only
+            let tomorrowString = `${today.getMonth() + 1}/${today.getDate()+1}/${today.getFullYear()}`;
+            console.log(tomorrowString);
+            let tomorrow = new Date(tomorrowString);
+            console.log(tomorrow);
+            //let's get next month
+            let nextM = new Date(`${today.getMonth() + 2}/${today.getDate()}/${today.getFullYear()}`)
+            console.log(nextM);
+
+            var currentDate = new Date();
+            console.log(currentDate);
+            var weekCounter = 0;
+            currentDate.setDate(1);
+            console.log("Offset: " + currentDate.getDay());
+            let offset = currentDate.getDay();
+            let pm = new Date();
+            pm.setDate(0);//last day of prev month;
+            let lastDay = pm.getDate();
+            let cm = currentDate.getMonth();
+            for(let i=-offset+1;i<=dayPerMonth[cm];i++){
+                currentDate.setMonth(cm);
+                currentDate.setDate(i);
+                if(currentDate.getDay()==0){
+                    console.log("NEXT WEEK");
+                }
+                console.log(currentDate.getDate() + " = " + currentDate.getDay() + " : " + currentDate);
+
+            }
 
             // days in previous month and next one , and day of week.
             var nextDate = new Date(nextMonth +' 1 ,'+year);
@@ -83,8 +118,14 @@
             // building the calendar html body.
             var calendarBody = "<table class='calendar'> <tr class='monthNow'><th colspan='7'>"
                 +monthNames[month]+" "+ year +"</th></tr>";
-            calendarBody +="<tr class='dayNames'>  <td>Sun</td>  <td>Mon</td> <td>Tues</td>"+
-                "<td>Wed</td> <td>Thurs</td> <td>Fri</td> <td>Sat</td> </tr>";
+            calendarBody +="<tr class='dayNames'>  " +
+                "<td>Sun</td> " +
+                "<td>Mon</td> " +
+                "<td>Tue</td> " +
+                "<td>Wed</td> " +
+                "<td>Thu</td> " +
+                "<td>Fri</td> " +
+                "<td>Sat</td> </tr>";
             calendarBody += "<tr>";
             calendarBody += htmlContent;
             calendarBody += "</tr></table>";
