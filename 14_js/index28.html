@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="add" hidden="true">Add Timer(10sec)</button>
+<div id="timer_container" hidden="true">Timer list:</div>
+
+<a>Name: </a><input id="name_input">
+<a>Date: </a><input id="date_input">
+<a>Description: </a><input id="description_input">
+<button id="addrow_button">Add row</button>
+
+<p></p>
+<a>Name: </a><input id="name_input_edit">
+<a>Date: </a><input id="date_input_edit">
+<a>Description: </a><input id="description_input_edit">
+<button id="editrow_button">Edit row</button>
+
+<table id="orders_table">
+    <thead>
+    <tr></tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Create date</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<script>
+    class Timer{
+
+        constructor(timerId) {
+
+            console.log("Создан экземпляр timer " + timerId);
+            this.timerId = timerId;
+            this.timeLeft = 10000;
+
+            const timerContainer = document.getElementById("timer_container");
+            const div = document.createElement('div');
+            div.id =`t${this.timerId}`;
+            div.innerText = `timer# ${this.timerId}, left:  ${this.timeLeft/1000}`;
+            timerContainer.appendChild(div);
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerText = "Delete";
+            timerContainer.appendChild(deleteBtn);
+
+            deleteBtn.onclick = ()=>{
+                console.log("need to delete current timer");
+                this.timeLeft = 100;
+            }
+
+        }
+
+        showId() {
+            console.log("T id: " + this.timerId);
+        }
+
+        static getCount() {
+            console.log("Загружаем счетчик");
+            //timerCount++;
+            //return counter++;
+        }
+
+        update(){
+            this.timeLeft -=100;
+            let currentTimer = document.getElementById("t"+this.timerId);
+            currentTimer.innerText = `timer# ${this.timerId}, left:  ${this.timeLeft/1000}`;
+
+        }
+
+        startCountdown(){
+            setTimeout(()=>{
+                this.update();
+                if (this.timeLeft > 0) this.startCountdown();
+            }, 100)
+
+        }
+
+    }
+
+    let count = 0;
+    document.getElementById("add").onclick = () => {
+        console.log("add clicked");
+        new Timer("t"+count++).startCountdown();
+        console.log("Timer count: " + Timer.getCount());
+    }
+
+
+    //ORDERS TABLE
+    const ordersTable = document.getElementById("orders_table");
+
+
+    const inputName = document.getElementById("name_input");
+    const inputDate = document.getElementById("date_input");
+    const inputDescription = document.getElementById("description_input");
+    const addRowButton = document.getElementById("addrow_button");
+
+    const editName = document.getElementById("name_input_edit");
+    const editDate = document.getElementById("date_input_edit");
+    const editDescription = document.getElementById("description_input_edit");
+    const editRowButton = document.getElementById("editrow_button");
+
+    let editIndex = 0;
+
+    editRowButton.onclick = ()=>{
+        console.log("edit row button row: " + editIndex);
+    }
+
+    addRowButton.onclick = ()=>{
+        console.log(`add new row
+        ${inputName.value}
+        ${inputDate.value}
+        ${inputDescription.value}` );
+
+        const newRow = document.createElement("tr");
+
+        const newCell1 = document.createElement("td");
+        newCell1.innerText = ordersTable.rows.length-1;
+        newRow.appendChild(newCell1);
+
+        const newCell2 = document.createElement("td");
+        newCell2.innerText = inputName.value;
+        newRow.appendChild(newCell2);
+
+        const newCell3 = document.createElement("td");
+        newCell3.innerText = inputDate.value;
+        newRow.appendChild(newCell3);
+
+        const newCell4 = document.createElement("td");
+        newCell4.innerText = inputDescription.value;
+        newRow.appendChild(newCell4);
+
+        const newCell5 = document.createElement("td");
+        //newCell5.innerHtml = `<td></td><button> Edit </button></td>`;
+        newCell5.innerHtml = `<button> Edit </button>`;
+        const editBtn = document.createElement("button");
+        editBtn.innerText = "Edit";
+        editBtn.onclick = ()=>{
+            console.log("edit btn " + newRow.rowIndex);
+            editName.value = newCell2.innerText;
+            editDate.value = newCell3.innerText;
+            editDescription.value = newCell4.innerText;
+            editIndex = newRow.rowIndex;
+
+        }
+        newCell5.appendChild(editBtn);
+        console.log(newCell5);
+        newRow.appendChild(newCell5);
+
+        const newCell6 = document.createElement("td");
+        //emptyRow.parentNode.removeChild(emptyRow)
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        deleteBtn.onclick = ()=>{
+            console.log("parend node: ");
+            console.log(newCell6.parentNode);
+            newRow.parentNode.removeChild(newRow);
+        }
+        newCell6.appendChild(deleteBtn);
+        console.log(newCell6);
+        newRow.appendChild(newCell6);
+
+
+        console.log("new row: ");
+        console.log(newRow);
+        ordersTable.appendChild(newRow);
+
+
+    }
+
+
+
+</script>
+</body>
+</html>
