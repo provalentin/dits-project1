@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+<button id="btn1">Button1 </button>
+<button class="btn">Button2 </button>
+<button class="btn">Button3 </button>
+<button id="btn4">Button4 </button>
+<div id="rect"></div>
+<div id="wrapper">
+    <button id="bbbtttnnn">Button inside wrapper</button>
+</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<div class="test">TEXT</div>
+<script>
+    var btn1 = $("#btn1");
+    console.log(btn1);
+    btn1.dblclick(function(e){
+        console.log(e);
+        console.log("btn1 double click");
+        //alert("HAHAHA");
+    });
+    btn1.on('click', function(){
+        console.log("btn1 click: another way");
+    })
+    var btnWithClass = $(".btn");
+    btnWithClass.click(function(){
+        console.log("class btn click");
+    })
+    console.log(btnWithClass);
+    var btnByTag = $('button');
+    console.log(btnByTag);
+    var btnWithWrapper = $('#wrapper button');
+    console.log(btnWithWrapper);
+
+    btnWithWrapper.click(function(){
+        btn1.toggle();
+        console.log("Visibility: " + btn1.isVisible);
+        btnWithClass.slideUp('slow');
+        if(btn1.is(":visible")){
+            console.log("visible");
+            btn1.fadeIn();
+
+        }else{
+            console.log("invisible");
+            btn1.fadeOut();
+        }
+    })
+
+    btn1.animate({
+        left: '250px',
+        height: '+=150px',
+        width: '+=150px'
+    });
+    $("#btn1").css("color", "red").slideUp(2000).slideDown(2000);
+
+     $('.test').css("color", "green")
+
+    var pokemonResult = $.ajax({
+        url: "https://pokeapi.co/api/v2/pokemon-form/1/",
+        success: function(data){
+            console.log(JSON.stringify(data));
+        }
+    });
+    //console.log(pokemonResult);
+</script>
+</body>
+</html>
