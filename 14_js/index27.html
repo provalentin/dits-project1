@@ -62,6 +62,51 @@
     //ARROW func
     var f = () => {}
 
+    function f() {
+        var outerValue = 123;
+        return function(){
+            console.log(outerValue);
+        }
+    }
+
+    function sum(a){return function(b){return a+b}}
+
+    console.log("result:" + sum(2)(3));
+
+    var f1 = () => console.log('f1');
+    var f2 = () => console.log('f2');
+
+    function f(num) {
+        var obj = {1 : f1, 2: f2};
+        obj[num] && obj[num]();
+
+    }
+
+    function Human(name) { this.name = name}
+    function Student(name) {this.name = name}
+    Student.prototype = Object.create(Human.prototype);
+    Student.prototype.constructor = Student;
+    //Student.prototype.constructor = Human;
+
+    console.log(new Student("miha"));
+    console.log(new Human("homo sapiens"));
+
+    //get/set/private field
+    function basket() {
+        var privateValue = 0;
+        return {
+            get: () => {
+                return privateValue;
+            },
+            set: (newValue) => {
+                privateValue = newValue;
+            }
+        }
+    }
+    var b = basket();
+    console.log(b.get());
+    console.log(b.set(124));
+    console.log(b.get())
 
 
 </script>
