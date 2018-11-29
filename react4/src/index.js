@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, Switch} from 'react-router';
 import {createBrowserHistory} from 'history';
 import './index.css';
-import App from './App';
-import Page2 from './containers/Page2';
-import Page3 from './containers/Page3';
+import routes from './routes/routes'
 import * as serviceWorker from './serviceWorker';
 
 const history = createBrowserHistory();
@@ -13,9 +11,7 @@ const history = createBrowserHistory();
 ReactDOM.render(
     <Router history={history} >
         <Switch>
-            <Route exact path={'/'} component={App}/>
-            <Route path={'/page2'} component={Page2}/>
-            <Route path={'/page3'} component={Page3}/>
+            {routes.map( ({path, exact, component}) => <Route {...{path, exact, component}}  />)}
         </Switch>
     </Router>
     , document.getElementById('root'));
