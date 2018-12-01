@@ -4,12 +4,6 @@ const getPokemons = function (cb) {
     }, cb)
 };
 
-const getPokemonByName = function (name, cb) {
-    makeRequest({
-        url: "..."
-    }, cb)
-};
-
 /**
  *
  * @param {number} data.id
@@ -17,7 +11,7 @@ const getPokemonByName = function (name, cb) {
  */
 const renderPokemonListItem = function(data) {
     const div = document.createElement('div');
-    div.innerText = `${data.id}: ${data.first_name}`;
+    div.innerHTML = `${data.id}: ${data.first_name}` + ` <a href="${data.id}">${data.first_name} </a>`;
     return div;
 };
 
@@ -28,12 +22,14 @@ getPokemons(function (pokemons) {
     })
 });
 
-fetch("https://pokeapi.co/api/v2/pokemon/?limit=10", {
-    method: "GET",
-    headers: {
-        "Content-Type": "application-json"
-    }
-})
+fetch("https://pokeapi.co/api/v2/pokemon/?limit=10"
+    // , {
+    // method: "GET",
+    // headers: {
+    //     "Content-Type": "application-json"
+    // }
+// }
+)
     .then(res=>res.json())
     .then(data=>console.log(data))
     .catch(error=>{});

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="todo_list_container" style="top: 100px; left:100px; width=200px; height=300px;">
+TODO LIST:
+</div>
+
+<script>
+
+    let savedList  = localStorage.getItem('todo');
+    console.log('saved list: ' + localStorage.todo);
+    console.log(savedList);
+    let todo_list_object;
+    if(savedList){
+        todo_list_object = JSON.parse(savedList);
+    }else {
+        todo_list_object = {todos:[
+                {id:"1", description:"first task for today", date:"", checked: true},
+                {id:"2", description:"second task for today", date:"", checked: false},
+                {id:"3", description:"third task for today", date:"", checked: true}
+            ]};
+    }
+
+    let container = document.getElementById("todo_list_container");
+    console.log(todo_list_object);
+    console.log(todo_list_object.todos.length);
+
+    let a = todo_list_object.todos;
+    for(let i=0;i<a.length;i++){
+        console.log(a[i].id);
+        console.log(a[i].date);
+        console.log(a[i].description);
+        let checkBoxWrapper = document.createElement("div");
+        let label = document.createElement("label");
+        label.innerText = a[i].description;
+        let checkBox = document.createElement("input");
+        checkBox.type = "checkbox";
+        checkBox.id = a[i].id;
+        checkBox.checked = a[i].checked;
+        checkBox.addEventListener("change", function(e){
+            console.log("change event");
+            console.log(e);
+            console.log(e.target.id);
+            a[i].checked = e.target.checked;
+            console.log(a[i]);
+            localStorage.setItem('todo', JSON.stringify(todo_list_object));
+        })
+        checkBoxWrapper.appendChild(checkBox);
+        checkBoxWrapper.appendChild(label);
+        container.appendChild(checkBoxWrapper);
+
+    }
+</script>
+</body>
+</html>
