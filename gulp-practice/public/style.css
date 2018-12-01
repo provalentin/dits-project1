@@ -1,0 +1,68 @@
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px; }
+
+.test .test2 {
+  color: red;
+  font-size: 20px; }
+
+.test3 {
+  color: blue; }
+
+a {
+  font-weight: bold;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+  body.firefox a {
+    font-weight: normal; }
+
+.test4.active {
+  text-color: red; }
+
+main {
+  width: 5em; }
+
+p {
+  color: green; }
+
+p.yellow-text {
+  background-color: yellow; }
+
+.parent-div {
+  background-color: red; }
+
+.left-div {
+  float: left;
+  width: 400px;
+  height: 200px;
+  border: 4px double black; }
+
+.right-div {
+  float: left;
+  margin-left: 50px;
+  width: 400px;
+  height: 200px;
+  border: 1px solid black; }
+
+.empty-div::after {
+  content: '';
+  display: block;
+  clear: both; }
+
+.test::after {
+  content: '';
+  display: block;
+  clear: both; }
+
+body.firefox .header:before {
+  content: "Hi, Firefox users"; }
+
+.sidebar {
+  width: 300px; }
+  @media screen and (orientation: landscape) {
+    .sidebar {
+      width: 500px; } }
