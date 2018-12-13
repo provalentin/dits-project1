@@ -7,6 +7,7 @@ import {Provider} from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import routes from './routes/routes'
 import store from './store/store.js'
+import App from './components/App'
 
 
 const history = createBrowserHistory();
@@ -15,9 +16,13 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Switch>
-                {routes.map(({path, exact, component})=>
-                    <Route path = {path} exact = {exact} component = {component}/>
-                )}
+                <Route path = "/" exact component = {App} />
+                    {/*<App*/}
+                       {/*value={store.getState()}*/}
+                       {/*onIncrement={() => store.dispatch({ type: 'INCREMENT' })}*/}
+                       {/*onDecrement={() => store.dispatch({ type: 'DECREMENT' })}*/}
+                    {/*/>*/}
+                />
             </Switch>
         </Router>
     </Provider>,

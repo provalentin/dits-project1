@@ -1,28 +1,52 @@
-import React, { Component } from 'react';
-import logo from '../logo.svg';
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import '../App.css';
 
+
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+    }
+
+    onIncrement = () => {
+        //this.props.counter++;
+        this.props.increment();
+    }
+
+    onDecrement = () => {
+        //this.props.counter--;
+        this.props.decrement();
+    }
+
+    render() {
+        console.log(this.props.counter);
+
+        return (
+            <p>
+                Clicked: {this.props.counter} times
+                {' '}
+                <button onClick={this.onIncrement}>
+                    +
+                </button>
+                {' '}
+                <button onClick={this.onDecrement}>
+                    -
+                </button>
+                {' '}
+            </p>
+        )
+    }
 }
 
-export default App;
+
+
+export default connect(
+    (state)=>({
+        counter: state.counter
+    }),
+    (dispatch)=>({
+        increment: () => {dispatch({type:"INCREMENT"})},
+        decrement: () => {dispatch({type:"DECREMENT"})},
+    })
+)(App)
