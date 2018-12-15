@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../App.css';
-
+import {fetchPokemonsList} from '../store/actions'
 
 
 class App extends Component {
-    constructor(props) {
-        super(props);
+    state={
+        results:[]
     }
 
     onIncrement = () => {
@@ -19,9 +19,11 @@ class App extends Component {
         this.props.decrement();
     }
 
-    render() {
-        console.log(this.props.counter);
+    gettingPokeList = () => {
+        this.props.fetchPokemons()
+    }
 
+    render() {
         return (
             <p>
                 Clicked: {this.props.counter} times
@@ -34,6 +36,9 @@ class App extends Component {
                     -
                 </button>
                 {' '}
+
+                <div> Pokemonis:</div>
+                <button onClick = {this.gettingPokeList}>FETCH POKEMONS</button>
             </p>
         )
     }
@@ -48,5 +53,6 @@ export default connect(
     (dispatch)=>({
         increment: () => {dispatch({type:"INCREMENT"})},
         decrement: () => {dispatch({type:"DECREMENT"})},
+        fetchPokemons: () => dispatch(fetchPokemonsList())
     })
 )(App)
