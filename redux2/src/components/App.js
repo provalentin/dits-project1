@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../App.css';
-import {fetchPokemonsList} from '../store/actions'
 
+import {mapActionToProps, mapStateToProps} from "./redux";
 
 class App extends Component {
     state={
@@ -44,15 +44,4 @@ class App extends Component {
     }
 }
 
-
-
-export default connect(
-    (state)=>({
-        counter: state.counter
-    }),
-    (dispatch)=>({
-        increment: () => {dispatch({type:"INCREMENT"})},
-        decrement: () => {dispatch({type:"DECREMENT"})},
-        fetchPokemons: () => dispatch(fetchPokemonsList())
-    })
-)(App)
+export default connect( mapStateToProps, mapActionToProps)(App)

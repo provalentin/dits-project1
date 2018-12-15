@@ -11,6 +11,8 @@
 
 const fetchWrapper = () => {
     const fetching = (api,method, body) => {
+        //get auth token from localStore
+        //add auth token to header object as method authorization
 
 
         const init  = {
@@ -25,6 +27,11 @@ const fetchWrapper = () => {
         return fetch(`https://pokeapi.co/api/v2/${api}/`, init)
             .then(res => res.json())
             .then(res => res)
+            //catch error if not authorised =>
+            // remove JWT token from localStorage
+            // and redirect to /user/login
+            //.catch((error)=> console.log(error))
+            //.catch(({status})=> Promise.reject(error))
     }
 
 
