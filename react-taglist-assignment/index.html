@@ -22,45 +22,10 @@
 
     <div id="sdkList" class="sdk-list">
         <H2>SDK list:</H2>
-        <div class="column">
-            <div class="text-item">SDK1</div>
-            <a class="text-item-small">tag1,tag2</a>
-        </div>
-        <div class="column">
-            <div class="text-item">SDK2</div>
-            <a class="text-item-small">tag1,tag2</a>
-        </div>
-        <div class="column">
-            <div class="text-item">SDK3</div>
-            <a class="text-item-small">tag1,tag2</a>
-        </div>
-        <div class="column">
-            <div class="text-item">SDK4</div>
-            <a class="text-item-small">tag1,tag2</a>
-        </div>
-        <div class="column">
-            <div class="text-item">SDK5</div>
-            <a class="text-item-small">tag1,tag2</a>
-        </div>
-        <div class="column">
-            <div class="text-item">SDK6</div>
-            <a class="text-item-small">tag1,tag2</a>
-        </div>
-        <div class="column">
-            <div class="text-item">SDK7</div>
-            <a class="text-item-small">tag1,tag2</a>
-        </div>
-        <div class="column">
-            <div class="text-item">SDK8</div>
-            <a class="text-item-small">tag1,tag2</a>
-        </div>
-
     </div>
 
     </br>
 <script>
-    console.log(taglist);
-    console.log(taglist.tags);
     let radioGroup = document.getElementById("radioGroup");
     for(let i = 0;i<taglist.tags.length;i++){
         //input type radio
@@ -73,13 +38,25 @@
         var label = document.createElement("label");
         label.for=taglist.tags[i]+"id";
         label.innerHTML = taglist.tags[i];
-        console.log(el);
         radioGroup.appendChild(el);
         radioGroup.appendChild(label);
         radioGroup.appendChild(document.createElement("br"));
     }
     console.log(radioGroup);
     console.log(taglist.sdks[0]);
+
+    let sdkList = document.getElementById("sdkList");
+    for(let i=0;i<taglist.sdks.length;i++){
+        console.log(taglist.sdks[i].name);
+        let div = document.createElement("div");
+        div.className = "column";
+        div.innerText = taglist.sdks[i].name;
+        let innerDiv = document.createElement("div");
+        innerDiv.className = "text-item-small";
+        innerDiv.innerText = "Tag1,Tag2,TagN";
+        div.appendChild(innerDiv);
+        sdkList.appendChild(div);
+    }
 
 </script>
 </body>

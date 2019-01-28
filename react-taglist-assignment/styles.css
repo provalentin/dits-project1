@@ -4,14 +4,16 @@ div {
 
 .tags-list{
     float: left;
-    height: 220px;
+    height: 200px;
+    width: 30%;
     background-color: #999999;
     overflow-y: scroll;
 }
 
 .sdk-list{
     float: left;
-    height: 220px;
+    height: 200px;
+    width: 70%;
     background-color: #61dafb;
     overflow-y: scroll;
 }
