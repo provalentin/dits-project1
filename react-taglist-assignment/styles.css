@@ -1,0 +1,36 @@
+div {
+    box-sizing: border-box;
+}
+
+.tags-list{
+    float: left;
+    height: 220px;
+    background-color: #999999;
+    overflow-y: scroll;
+}
+
+.sdk-list{
+    float: left;
+    height: 220px;
+    background-color: #61dafb;
+    overflow-y: scroll;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 80px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.text-item-small {
+    font-size: 16px;
+}
