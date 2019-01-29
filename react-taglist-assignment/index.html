@@ -10,12 +10,12 @@
     <div id="radioGroup" class="tags-list">
         <p>Please select your tag:</p>
 
-        <input type="radio" id="contactChoiceSearch" name="tag" value="search">
-        <input type="search" for="contactChoiceSearch" placeholder="Search">
+        <input type="radio" id="radioSearch" name="tag" value="search">
+        <input type="search" for="radioSearch" id="searchInput" placeholder="Search">
         </br>
 
-        <input type="radio" id="contactChoiceAll" name="tag" value="tag0" checked="true">
-        <label for="contactChoiceAll">All</label>
+        <input type="radio" id="radioAllTags" name="tag" value="tag0" checked="true">
+        <label for="radioAllTags">All</label>
         </br>
 
     </div>
@@ -26,6 +26,19 @@
 
     </br>
 <script>
+    let radioAllTags = document.getElementById("radioAllTags");
+    radioAllTags.onclick = function () {
+        console.log("All tags click");
+    }
+    var radioSearch = document.getElementById("radioSearch");
+    radioSearch.onclick = function () {
+        console.log("Search tag click")
+    }
+    let searchInput = document.getElementById("searchInput");
+    searchInput.onclick = function () {
+        console.log("search input click");
+        radioSearch.checked = true;
+    }
     let radioGroup = document.getElementById("radioGroup");
     for(let i = 0;i<taglist.tags.length;i++){
         //input type radio
@@ -34,13 +47,19 @@
         el.value = taglist.tags[i];
         el.name = "tag";
         el.id = taglist.tags[i]+"id";
+
         //label for radio
         var label = document.createElement("label");
-        label.for=taglist.tags[i]+"id";
+        label.htmlFor=taglist.tags[i]+"id";
         label.innerHTML = taglist.tags[i];
         radioGroup.appendChild(el);
         radioGroup.appendChild(label);
         radioGroup.appendChild(document.createElement("br"));
+        el.onclick = function () {
+            console.log("click: " + this.id);
+            console.log("click: " + this.name);
+            console.log("click: " + this.value);
+        }
     }
     console.log(radioGroup);
     console.log(taglist.sdks[0]);
