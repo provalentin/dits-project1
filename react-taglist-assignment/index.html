@@ -19,16 +19,18 @@
         </br>
 
     </div>
-
     <div id="sdkList" class="sdk-list">
         <H2>SDK list:</H2>
     </div>
-
     </br>
 <script>
+    var currentTag = "All";
     let radioAllTags = document.getElementById("radioAllTags");
     radioAllTags.onclick = function () {
         console.log("All tags click");
+        currentTag = "All";
+        console.log("currentTag: " + currentTag);
+        renderSDK(currentTag);
     }
     var radioSearch = document.getElementById("radioSearch");
     radioSearch.onclick = function () {
@@ -59,24 +61,40 @@
             console.log("click: " + this.id);
             console.log("click: " + this.name);
             console.log("click: " + this.value);
+            console.log("currentTag: " + currentTag);
+            currentTag = taglist.tags[i];
+            renderSDK(currentTag);
         }
     }
     console.log(radioGroup);
     console.log(taglist.sdks[0]);
 
-    let sdkList = document.getElementById("sdkList");
-    for(let i=0;i<taglist.sdks.length;i++){
-        console.log(taglist.sdks[i].name);
-        let div = document.createElement("div");
-        div.className = "column";
-        div.innerText = taglist.sdks[i].name;
-        let innerDiv = document.createElement("div");
-        innerDiv.className = "text-item-small";
-        innerDiv.innerText = "Tag1,Tag2,TagN";
-        div.appendChild(innerDiv);
-        sdkList.appendChild(div);
-    }
+    function renderSDK(curTag) {
+        console.log("render SDKS: " + curTag);
+        var newSDKList = taglist.sdks.filter(function (sdk) {
+            if(curTag=="All") {
+                return true
+            } else {
+                return sdk.tags.includes(curTag);
+            }
 
+        });
+        console.log(newSDKList);
+        let sdkList = document.getElementById("sdkList");
+        sdkList.innerHTML = "<H2>SDK list:</H2>";
+        for (let i = 0; i < newSDKList.length; i++) {
+            console.log(newSDKList[i].name);
+            let div = document.createElement("div");
+            div.className = "column";
+            div.innerText = newSDKList[i].name;
+            let innerDiv = document.createElement("div");
+            innerDiv.className = "text-item-small";
+            innerDiv.innerText = newSDKList[i].tags.toString();
+            div.appendChild(innerDiv);
+            sdkList.appendChild(div);
+        }
+    }
+    renderSDK(currentTag);
 </script>
 </body>
 </html>
