@@ -27,19 +27,23 @@
     var currentTag = "All";
     let radioAllTags = document.getElementById("radioAllTags");
     radioAllTags.onclick = function () {
-        console.log("All tags click");
         currentTag = "All";
-        console.log("currentTag: " + currentTag);
         renderSDK(currentTag);
     }
     var radioSearch = document.getElementById("radioSearch");
     radioSearch.onclick = function () {
-        console.log("Search tag click")
+        currentTag = searchInput.value;
+        renderSDK(currentTag);
     }
     let searchInput = document.getElementById("searchInput");
     searchInput.onclick = function () {
-        console.log("search input click");
         radioSearch.checked = true;
+        currentTag = searchInput.value;
+        renderSDK(currentTag);
+    }
+    searchInput.oninput = function (e) {
+        currentTag = searchInput.value;
+        renderSDK(currentTag);
     }
     let radioGroup = document.getElementById("radioGroup");
     for(let i = 0;i<taglist.tags.length;i++){
@@ -79,11 +83,11 @@
             }
 
         });
-        console.log(newSDKList);
+        //console.log(newSDKList);
         let sdkList = document.getElementById("sdkList");
         sdkList.innerHTML = "<H2>SDK list:</H2>";
         for (let i = 0; i < newSDKList.length; i++) {
-            console.log(newSDKList[i].name);
+            //console.log(newSDKList[i].name);
             let div = document.createElement("div");
             div.className = "column";
             div.innerText = newSDKList[i].name;
