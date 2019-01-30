@@ -45,6 +45,7 @@
         currentTag = searchInput.value;
         renderSDK(currentTag);
     }
+    //Radio group list
     let radioGroup = document.getElementById("radioGroup");
     for(let i = 0;i<taglist.tags.length;i++){
         //input type radio
@@ -62,35 +63,24 @@
         radioGroup.appendChild(label);
         radioGroup.appendChild(document.createElement("br"));
         el.onclick = function () {
-            console.log("click: " + this.id);
-            console.log("click: " + this.name);
-            console.log("click: " + this.value);
-            console.log("currentTag: " + currentTag);
             currentTag = taglist.tags[i];
             renderSDK(currentTag);
         }
     }
-    console.log(radioGroup);
-    console.log(taglist.sdks[0]);
 
-    function renderSDK(curTag) {
-        console.log("render SDKS: " + curTag);
+    //SDK list
+    function renderSDK(tag) {
         var newSDKList = taglist.sdks.filter(function (sdk) {
-            if(curTag=="All") {
-                return true
-            } else {
-                return sdk.tags.includes(curTag);
-            }
-
+            return tag==="All"?true:sdk.tags.includes(tag);
         });
-        //console.log(newSDKList);
         let sdkList = document.getElementById("sdkList");
         sdkList.innerHTML = "<H2>SDK list:</H2>";
         for (let i = 0; i < newSDKList.length; i++) {
-            //console.log(newSDKList[i].name);
             let div = document.createElement("div");
             div.className = "column";
+            //big text - 1st line
             div.innerText = newSDKList[i].name;
+            //small text - 2nd line
             let innerDiv = document.createElement("div");
             innerDiv.className = "text-item-small";
             innerDiv.innerText = newSDKList[i].tags.toString();
@@ -98,6 +88,7 @@
             sdkList.appendChild(div);
         }
     }
+
     renderSDK(currentTag);
 </script>
 </body>
